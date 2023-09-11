@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Propiedades -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ESTILO Y DECORACION -->
+    <link rel="stylesheet" href="Style.css" />
+
+    <!-- Elementos-->
+    <title>UDG_CV</title>
+  </head>
+
+  <body>
+    <!-- [ Banner ] -->
+    <header>
+      <nav class="Mn_Banner">
+        <div class="Cn_Banner">
+          <a href="#" onclick="GOTO_MENU('Principal')">
+            <img src="IMG/udg-logo.png" alt="" />
+          </a>
+        </div>
+      </nav>
+    </header>
+    <br />
+
+    <!-- [ Iniciar Sesion ] -->
+    <div class="Mn_Login" id="Mn_Login">
+      <br /><br />
+      <form class="Cn_Login">
+        <img src="IMG/Cutlajo_Logo.png" alt="" />
+        <input
+          type="text"
+          class="Input_Text"
+          id="LOGIN_USER"
+          placeholder="Codigo de Usuario"
+        />
+        <input
+          type="text"
+          class="Input_Text"
+          id="LOGIN_PASSWORD"
+          placeholder="Contraseña"
+        />
+        <button type="button" class="Btn_Sty_1" onclick="User_Login()">
+          <img src="IMG/cursor.svg" alt="" />
+          Continuar
+        </button>
+        <button
+          type="button"
+          class="Btn_Sty_0 Tooltip"
+          onclick="GOTO_MENU('Recuperar')"
+        >
+          <img src="IMG/Key.svg" alt="" />
+          Olvidaste tu Contraseña?
+        </button>
+        <hr />
+        <button
+          type="button"
+          class="Btn_Sty_2 Tooltip"
+          onclick="GOTO_MENU('Registro')"
+        >
+          <img src="IMG/Users.svg" alt="" />
+          Crear Cuenta
+        </button>
+      </form>
+      <br />
+      <div class="" style="margin: 0 auto">
+        <button
+          type="button"
+          class="Btn_Sty_4"
+          onclick="User_Login('LOCAL')"
+          style="width: 320px; justify-content: center"
+        >
+          <img src="IMG/Computer.svg" alt="" />
+          LOCAL
+        </button>
+      </div>
+    </div>
+
+    <!-- [ Registro ] -->
+    <div class="Mn_Registro Hiden" id="Mn_Registro">
+      <form class="Cn_Registro" id="Register_Form">
+        <br />
+        <h2 class="Text_Sty_1">Solicitud de Registro</h2>
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <h3 class="Text_Sty_1">
+            Solicitar Registro Como
+            <button type="button" class="Tooltip">
+              i
+              <div class="Mn_Tip">
+                <div class="Cn_Tip">
+                  <p class="">Papel que se desempeña en la universidad.</p>
+                </div>
+              </div>
+            </button>
+          </h3>
+          <br />
+          <div class="Grid">
+            <div class="Input_Div">
+              <input
+                type="radio"
+                name="User_Level"
+                id="User_Level1"
+                value="Visit"
+              />
+              <label for="User_Level1">Visitante</label>
+            </div>
+            <div class="Input_Div">
+              <input
+                type="radio"
+                name="User_Level"
+                id="User_Level2"
+                value="Student"
+              />
+              <label for="User_Level2">Estudiante</label>
+            </div>
+            <div class="Input_Div">
+              <input
+                type="radio"
+                name="User_Level"
+                id="User_Level3"
+                value="Docent"
+              />
+              <label for="User_Level3">Docente</label>
+            </div>
+            <div class="Input_Div">
+              <input
+                type="radio"
+                name="User_Level"
+                id="User_Level4"
+                value="Admin"
+              />
+              <label for="User_Level4">Administrativo</label>
+            </div>
+          </div>
+          <br />
+          <div class="Input_Div">
+            <input
+              type="text"
+              class="Input_Text"
+              placeholder="Codigo de identificacion UDG"
+              id="R_Code"
+            />
+          </div>
+          <br />
+        </div>
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <br />
+          <h3 class="Text_Sty_1">
+            Informacion Personal
+            <button type="button" class="Tooltip">
+              i
+              <div class="Mn_Tip">
+                <div class="Cn_Tip">
+                  <p class="">Datos personales para el registro.</p>
+                </div>
+              </div>
+            </button>
+          </h3>
+          <span>
+            <input type="file" name="R_IMG1" id="R_IMG1" style="display: none;">
+            <label for="R_IMG1" class="Btn_Sty_4">
+              <img src="IMG/Picture_Face.svg" alt="">
+              SELECCIONAR IMAGEN
+            </label>
+          </span>
+          <br />
+          <div class="Grid">
+            <div class="Input_Div">
+              <input
+                type="text"
+                class="Input_Text"
+                id="User_Name"
+                placeholder="Nombre Completo"
+              />
+            </div>
+            <div class="Input_Div">
+              <input
+                type="date"
+                class="Input_Text"
+                id="User_Date"
+                placeholder="Fecha de Nacimiento"
+              />
+            </div>
+            <div class="Input_Div">
+              <input
+                type="text"
+                class="Input_Text"
+                id="Email"
+                placeholder="Correo Electronico"
+              />
+            </div>
+            <div class="Input_Div">
+              <input
+                type="text"
+                class="Input_Text"
+                id="Tel"
+                placeholder="Telefono Cel"
+              />
+            </div>
+            <div class="Input_Div">
+              <input
+                type="password"
+                class="Input_Text"
+                id="User_Password"
+                placeholder="Contraseña"
+              />
+            </div>
+            <div class="Input_Div">
+              <input
+                type="password"
+                class="Input_Text"
+                id="User_Password_2"
+                placeholder="Comfirmar Contraseña"
+              />
+            </div>
+          </div>
+          <br />
+          <p>*Se recomienda una contraseña de minimo 8 caracteres.</p>
+          <br />
+        </div>
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <br />
+          <h3 class="Text_Sty_1">
+            Informacion Del Vehiculo
+            <button type="button" class="Tooltip">
+              i
+              <div class="Mn_Tip">
+                <div class="Cn_Tip">
+                  <p class="">Datos del Vehiculo a Registrar.</p>
+                  <p class="">
+                    (Solo 1 Vehiculo por cuenta permitido, en caso de utilizar
+                    mas de 1 informarlo en oficinas)
+                  </p>
+                </div>
+              </div>
+            </button>
+          </h3>
+          <span>
+            <input type="file" name="R_IMG2" id="R_IMG2" style="display: none;">
+            <label for="R_IMG2" class="Btn_Sty_4">
+              <img src="IMG/Car_Info.svg" alt="">
+              SELECCIONAR IMAGEN
+            </label>
+          </span>
+          <br />
+          <div class="Grid">
+            <div class="Input_Div">
+              <input type="radio" name="V_Type" id="V_Type_1" value="Moto" />
+              <label for="V_Type_1">Moto</label>
+            </div>
+            <div class="Input_Div">
+              <input
+                type="radio"
+                name="V_Type"
+                id="V_Type_2"
+                value="Automovil"
+              />
+              <label for="V_Type_2">Automovil</label>
+            </div>
+            <div class="Input_Div">
+              <input
+                type="radio"
+                name="V_Type"
+                id="V_Type_3"
+                value="Camioneta"
+              />
+              <label for="V_Type_3">Camioneta</label>
+            </div>
+            <div class="Input_Div">
+              <input type="radio" name="V_Type" id="V_Type_4" value="Autobus" />
+              <label for="V_Type_4">Autobus</label>
+            </div>
+          </div>
+          <br />
+          <div class="Grid">
+            <div class="Input_Div">
+              <input
+                type="text"
+                class="Input_Text"
+                id="V_Mark"
+                placeholder="Marca"
+              />
+            </div>
+            <div class="Input_Div">
+              <input
+                type="text"
+                class="Input_Text"
+                id="V_Model"
+                placeholder="Modelo"
+              />
+            </div>
+            <div class="Input_Div">
+              <input
+                type="text"
+                class="Input_Text"
+                id="V_Year"
+                placeholder="Año"
+              />
+            </div>
+            <div class="Input_Div">
+              <input
+                type="text"
+                class="Input_Text"
+                id="V_Color"
+                placeholder="Color"
+              />
+            </div>
+            <div class="Input_Div">
+              <input
+                type="text"
+                class="Input_Text"
+                id="V_Plate"
+                placeholder="Placa"
+              />
+            </div>
+            <div class="Input_Div">
+              <input
+                type="text"
+                class="Input_Text"
+                id="V_Detail"
+                placeholder="Detalles"
+              />
+            </div>
+          </div>
+          <br />
+        </div>
+        <br />
+        <div>
+          <button type="button" class="Btn_Sty_4" onclick="GOTO_MENU('Login')">
+            <img src="IMG/Undo.svg" alt="" />
+            Volver
+          </button>
+          <button type="button" class="Btn_Sty_1" onclick="Register_User()">
+            <img src="IMG/Wifi_Cloud.svg" alt="" />
+            Enviar Solicitud
+          </button>
+        </div>
+        <br /><br /><br />
+      </form>
+    </div>
+
+    <!-- [ Recuperacion ] -->
+    <div class="Mn_Recuperar Hiden" id="Mn_Recuperar">
+      <div action="" class="Cn_Recuperar">
+        <div class="Cn_Box_Sty_1">
+          <h1 class="">RECUPERAR CUENTA</h1>
+          <h3 class="">Informacion de recuperacion</h3>
+          <input
+            type="text"
+            id="Forget_Email"
+            class="Input_Text"
+            placeholder="Codigo de Usuario"
+          />
+          <p>- O -</p>
+          <input
+            type="text"
+            id="Forget_Email2"
+            class="Input_Text"
+            placeholder="Correo Electronico"
+          />
+          <div>
+            <button
+              type="button"
+              class="Btn_Sty_4"
+              onclick="GOTO_MENU('Login')"
+            >
+              <img src="IMG/Undo.svg" alt="" />
+              Volver
+            </button>
+            <button type="button" class="Btn_Sty_1" onclick="Send_Email()">
+              <img src="IMG/Wifi_Cloud.svg" alt="" />
+              Enviar Solicitud
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- [ Visitante > Principal ] -->
+    <div class="Mn_Principal_Student Hiden" id="Mn_Principal_Student">
+      <div class="Cn_Principal_Student">
+         <br />
+        <div class="Cn_Box_Sty_1">
+          <h2 class="Text_Sty_2">Sistema de Cotrol Vehicular</h2>
+        </div>
+        <hr />
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <img src="IMG/History.svg" alt="" />
+          <div>
+            <h4 class="Text_Sty_1">Historial de Visitas</h4>
+            <p>
+              Ver mi historial de Entradas y Salidas del campo universitario
+            </p>
+            <br />
+            <button
+              type="button"
+              class="Btn_Sty_1"
+              onclick="GOTO_MENU('History')"
+            >
+              Ver Historial
+            </button>
+          </div>
+          <br />
+        </div>
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <img src="IMG/Info.svg" alt="" />
+          <div>
+            <h4 class="Text_Sty_1">Inofrmacion Personal</h4>
+            <p>
+              Obtener la ficha con toda la informacion Personal y del vehiculo
+              registrado
+            </p>
+            <br />
+            <button type="button" class="Btn_Sty_1" onclick="Info_Menu(null)">
+              Consultar Informacion
+            </button>
+          </div>
+          <br />
+        </div>
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <img src="IMG/Document.svg" alt="" />
+          <div>
+            <h4 class="Text_Sty_1">Generar un Reporte</h4>
+            <p>
+              Generar y enviar un reporte acerca de alguna anomalia en el
+              vehiculo durante la estancia en el centro universitario
+            </p>
+            <br />
+            <button
+              type="button"
+              class="Btn_Sty_1"
+              onclick="GOTO_MENU('Report')"
+            >
+              Reportar
+            </button>
+          </div>
+          <br />
+        </div>
+        <br />
+        <hr />
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <button type="button" class="Btn_Sty_3" onclick="GOTO_MENU('Login')">
+            Cerrar Sesion
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- [ Visitante > Historial ] -->
+    <div class="Mn_Historial_Student Hiden" id="Mn_Historial_Student">
+      <div class="Cn_Hitorial_Student">
+        <br />
+        <div class="Sm_Grid">
+          <button
+            type="button"
+            class="Btn_Sty_1"
+            onclick="GOTO_MENU('Principal')"
+          >
+            <img src="IMG/Undo.svg" alt="" />Volver
+          </button>
+          <h2 class="Text_Sty_1">Historial de Entradas y Salidas</h2>
+          <div></div>
+        </div>
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <br />
+          <div class="Grid">
+            <div class="Input_Div">
+              <input
+                type="radio"
+                name="History_Search_Visit"
+                id="Filter_1b"
+                class=""
+              />
+              <label for="Filter_1b">Fecha</label>
+            </div>
+            <div class="Input_Div">
+              <input
+                type="radio"
+                name="History_Search_Visit"
+                id="Filter_2b"
+                class=""
+                checked="True"
+              />
+              <label for="Filter_2b">Hora</label>
+            </div>
+            <div class="Input_Div">
+              <input
+                type="radio"
+                name="History_Search_Visit"
+                id="Filter_3b"
+                class=""
+              />
+              <label for="Filter_3b">Movimiento</label>
+            </div>
+          </div>
+          <br />
+          <hr />
+          <div class="Input_Div">
+            <input
+              type="search"
+              class="Input_Text"
+              id="History_Search"
+              placeholder="BUSCAR"
+            />
+            <button type="button" class="Btn_Sty_1" onclick="History_List()">
+              Buscar
+            </button>
+          </div>
+        </div>
+        <hr />
+        <div class="Cn_Box_Sty_1">
+          <table class="" id="Table_History_Est">
+            <tr class="Table_Up">
+              <td class="td_Title">Fecha</td>
+              <td class="td_Title">Movimiento</td>
+              <td class="td_Title">Hora</td>
+              <td class="td_Title">Vehiculo</td>
+              <td class="td_Title">Observacion</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+          <h3 class="Text_Sty_2">No se encontraron mas Datos</h3>
+          <br />
+        </div>
+        <br />
+        <br />
+      </div>
+    </div>
+
+    <!-- [ Visitante > Informacion ] -->
+    <div class="Mn_Info_Student Hiden" id="Mn_Info_Student">
+      <div class="Cn_Info_Student">
+        <br />
+        <div class="Sm_Grid">
+          <button
+            type="button"
+            class="Btn_Sty_1"
+            onclick="GOTO_MENU('Principal')"
+          >
+            <img src="IMG/Undo.svg" alt="" />Volver
+          </button>
+          <h2 class="Text_Sty_1">Informacion Personal</h2>
+          <div></div>
+        </div>
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <br />
+          <h2 class="Text_Sty_1">Fotografias</h2>
+          <br />
+          <div class="Grid Sm_Grid">
+            <img src="" alt="" class="Info_IMG" id="Info_IMG_Person" />
+            <img src="" alt="" class="Info_IMG" id="Info_IMG_Car" />
+          </div>
+          <br />
+        </div>
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <br />
+          <h2 class="Text_Sty_1">Informacion de la Cuenta</h2>
+          <br />
+          <div class="Cn_Box_Sty_2">
+            <p class="Text_Sty_1">Papel:</p>
+            <p id="INFO_LEVEL"></p>
+          </div>
+          <hr />
+          <div class="Grid">
+            <div class="Cn_Box_Sty_2">
+              <p class="Text_Sty_1">Nombre:</p>
+              <p id="INFO_NAME"></p>
+            </div>
+            <div class="Cn_Box_Sty_2">
+              <p class="Text_Sty_1">Fecha de Nacimiento:</p>
+              <p id="INFO_DATE"></p>
+            </div>
+            <div class="Cn_Box_Sty_2">
+              <p class="Text_Sty_1">Correo Electronico:</p>
+              <p id="INFO_EMAIL"></p>
+            </div>
+            <div class="Cn_Box_Sty_2">
+              <p class="Text_Sty_1">Telefono:</p>
+              <p id="INFO_TEL"></p>
+            </div>
+            <br />
+          </div>
+        </div>
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <br />
+          <h2 class="Text_Sty_1">Informacion del Vehiculo</h2>
+          <br />
+          <div class="Grid">
+            <div class="Cn_Box_Sty_2">
+              <p class="Text_Sty_1">Tipo:</p>
+              <p id="INFO_V_TYPE"></p>
+            </div>
+            <div class="Cn_Box_Sty_2">
+              <p class="Text_Sty_1">Marca:</p>
+              <p id="INFO_V_MARK"></p>
+            </div>
+            <div class="Cn_Box_Sty_2">
+              <p class="Text_Sty_1">Modelo:</p>
+              <p id="INFO_V_MODEL"></p>
+            </div>
+            <div class="Cn_Box_Sty_2">
+              <p class="Text_Sty_1">Año:</p>
+              <p id="INFO_V_YEAR"></p>
+            </div>
+            <div class="Cn_Box_Sty_2">
+              <p class="Text_Sty_1">Color:</p>
+              <p id="INFO_V_COLOR"></p>
+            </div>
+            <div class="Cn_Box_Sty_2">
+              <p class="Text_Sty_1">Placas:</p>
+              <p id="INFO_V_PLATES"></p>
+            </div>
+            <br />
+          </div>
+        </div>
+        <br />
+        <hr />
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <div class="Grid">
+            <button type="button" class="Btn_Sty_1" onclick="Update_User()">
+              <img src="IMG/Document.svg" alt="" />
+              Solicitar Correccion
+            </button>
+            <button
+              type="button"
+              class="Btn_Sty_3"
+              onclick="GOTO_MENU('Report')"
+            >
+              <img src="IMG/Document.svg" alt="" />
+              Reportar Error
+            </button>
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
+      </div>
+    </div>
+
+    <!-- [ Admin > Principal ] -->
+    <div class="Mn_Principal_Admin Hiden" id="Mn_Principalin">
+      <div class="Cn_Principal_Admin">
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <h2 class="Text_Sty_2">Sistema de Cotrol Vehicular</h2>
+        </div>
+        <hr />
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <img src="IMG/Control.svg" alt="" />
+          <div>
+            <h4 class="Text_Sty_1">Control de Registro Vehicular</h4>
+            <p>Registrar Nuevas Entradas y Salidas de Vehiculos</p>
+            <br />
+            <button
+              type="button"
+              class="Btn_Sty_1"
+              onclick="GOTO_MENU('Control')"
+            >
+              Control Vehicular
+            </button>
+            <br />
+          </div>
+        </div>
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <img src="IMG/History.svg" alt="" />
+          <div>
+            <h4 class="Text_Sty_1">Historial de Registros</h4>
+            <p>
+              Historial de Entradas y Salidas de Visitas, Estudiantes, Maestros
+              y Personal
+            </p>
+            <br />
+            <button
+              type="button"
+              class="Btn_Sty_1"
+              onclick="GOTO_MENU('History')"
+            >
+              Historial de Registros
+            </button>
+            <br />
+          </div>
+        </div>
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <img src="IMG/Car_Info.svg" alt="" />
+          <div>
+            <h4 class="Text_Sty_1">Consultar Informacion Vehicular</h4>
+            <p>Obten la informacion basica del dueño del vehiculo</p>
+            <br />
+            <button
+              type="button"
+              class="Btn_Sty_1"
+              onclick="GOTO_MENU('Info_Adm')"
+            >
+              Consultar Informacion
+            </button>
+            <br />
+          </div>
+        </div>
+        <br />
+        <hr />
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <img src="IMG/Info.svg" alt="" />
+          <div>
+            <h4 class="Text_Sty_1">Informacion de la Cuenta</h4>
+            <p>
+              Obtener la ficha con toda la informacion propia de la cuenta
+              registrado
+            </p>
+            <br />
+            <button type="button" class="Btn_Sty_1" onclick="Info_Menu(null)">
+              Consultar Informacion
+            </button>
+            <br />
+          </div>
+        </div>
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <button type="button" class="Btn_Sty_3" onclick="End_Sesion()">
+            Cerrar Sesion
+          </button>
+        </div>
+        <br /><br />
+      </div>
+    </div>
+
+    <!-- [ Admin > Control Vehicular ] -->
+    <div class="Mn_Control Hiden" id="Mn_Control">
+      <div class="Cn_Control">
+        <br />
+        <div class="Sm_Grid">
+          <button
+            type="button"
+            class="Btn_Sty_1"
+            onclick="GOTO_MENU('Principal')"
+          >
+            <img src="IMG/Undo.svg" alt="" />Volver
+          </button>
+          <h2 class="Text_Sty_1">Control Vehicular</h2>
+          <div></div>
+        </div>
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <div class="Flex">
+            <div class="Cn_Box_Sty_1">
+              <h3>Fecha:</h3>
+              <p class="DEV_Date"></p>
+            </div>
+            <div class="Cn_Box_Sty_1">
+              <h3>Hora:</h3>
+              <p class="DEV_Time"></p>
+            </div>
+            <div class="Cn_Box_Sty_1">
+              <h3>Tipo de Movimiento:</h3>
+              <div class="Flex">
+                <div class="Input_Div">
+                  <input
+                    type="radio"
+                    name="Control"
+                    id="Control_1"
+                    value="ENTRADA"
+                    checked
+                  />
+                  <label for="Control_1">Entrada</label>
+                </div>
+                <div class="Input_Div">
+                  <input
+                    type="radio"
+                    name="Control"
+                    id="Control_2"
+                    value="SALIDA"
+                  />
+                  <label for="Control_2">Salida</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="Input_Div">
+            <input
+              type="text"
+              class="Input_Text"
+              id="Control_Plates"
+              placeholder="Placas"
+            />
+            <button
+              type="button"
+              class="Btn_Sty_1"
+              onclick="Add_Control_Register()"
+            >
+              <img src="IMG/Add.svg" alt="" />
+              Registrar
+            </button>
+          </div>
+          <br />
+          <span>
+            <button
+              type="button"
+              class="Btn_Sty_1"
+              onclick="GOTO_MENU('History')"
+            >
+              <img src="IMG/History.svg" alt="" />
+              Ver Hitorial de Registros
+            </button>
+            <button
+              type="button"
+              class="Btn_Sty_1"
+              onclick="Update_Last_Control()"
+            >
+              <img src="IMG/Edit.svg" alt="" />
+              Corregir Ultimo Registro
+            </button>
+          </span>
+          <br />
+          <table class="" id="Table_Control">
+            <tr class="Table_Up">
+              <td class="td_Title">Fecha</td>
+              <td class="td_Title">Movimiento</td>
+              <td class="td_Title">Hora</td>
+              <td class="td_Title">Vehiculo ID</td>
+            </tr>
+          </table>
+          <br />
+        </div>
+        <br />
+      </div>
+    </div>
+
+    <!-- [ Admin > Historial ] -->
+    <div class="Mn_Historial_Admin Hiden" id="Mn_Historial_Admin">
+      <div class="Cn_Historial_Admin">
+        <br />
+        <div class="Sm_Grid">
+          <button
+            type="button"
+            class="Btn_Sty_1"
+            onclick="GOTO_MENU('Principal')"
+          >
+            <img src="IMG/Undo.svg" alt="" />Volver
+          </button>
+          <h2 class="Text_Sty_1">Historial de Entradas y Salidas</h2>
+          <div></div>
+        </div>
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <h3 class="Text_Sty_1">Filtro de Busqueda</h3>
+          <div class="Grid">
+            <div class="Input_Div">
+              <input
+                type="radio"
+                name="History_Search_Admin"
+                id="Filter_1"
+                class=""
+              />
+              <label for="Filter_1">Fecha</label>
+            </div>
+            <div class="Input_Div">
+              <input
+                type="radio"
+                name="History_Search_Admin"
+                id="Filter_2"
+                class=""
+                checked="True"
+              />
+              <label for="Filter_2">Placa</label>
+            </div>
+          </div>
+          <br />
+          <hr />
+          <div class="Input_Div">
+            <input
+              type="search"
+              class="Input_Text"
+              id="History_Search"
+              placeholder="Buscar"
+            />
+            <button type="button" class="Btn_Sty_1" onclick="History_List(true)">
+              <img src="IMG/Search.svg" alt="" />
+              Buscar
+            </button>
+          </div>
+          <br />
+          <table class="" id="Table_History">
+            <tr class="Table_Up">
+              <td class="td_Title">Fecha</td>
+              <td class="td_Title">Movimiento</td>
+              <td class="td_Title">Hora</td>
+              <td class="td_Title">Vehiculo</td>
+              <td class="td_Title">Dueño</td>
+              <td class="td_Title Hiden_Sm">Marca</td>
+            </tr>
+          </table>
+          <h3 class="Text_Sty_2">No se encontraron mas Datos</h3>
+          <br />
+        </div>
+        <br />
+      </div>
+    </div>
+
+    <!-- [ Admin > Informacion ] -->
+    <div class="Mn_Info_Admin Hiden" id="Mn_Info_Admin">
+      <div class="Cn_Info_Admin">
+        <br />
+        <div class="Sm_Grid">
+          <button
+            type="button"
+            class="Btn_Sty_1"
+            onclick="GOTO_MENU('Principal')"
+          >
+            <img src="IMG/Undo.svg" alt="" />Volver
+          </button>
+          <h2 class="Text_Sty_1">Base de Datos de Vehiculos</h2>
+          <div></div>
+        </div>
+        <br />
+        <div class="Cn_Box_Sty_1">
+          <h3 class="Text_Sty_1">Filtro de Busqueda</h3>
+          <div class="Grid">
+            <div class="Input_Div">
+              <input
+                type="radio"
+                name="Info_Search_Admin"
+                id="Info_Filter_5"
+                class=""
+              />
+              <label for="Info_Filter_5">Dueño</label>
+            </div>
+            <div class="Input_Div">
+              <input
+                type="radio"
+                name="Info_Search_Admin"
+                id="Info_Filter_1"
+                class=""
+                checked="True"
+              />
+              <label for="Info_Filter_1">Placa</label>
+            </div>
+            <div class="Input_Div">
+              <input
+                type="radio"
+                name="Info_Search_Admin"
+                id="Info_Filter_2"
+                class=""
+              />
+              <label for="Info_Filter_2">Tipo</label>
+            </div>
+            <div class="Input_Div">
+              <input
+                type="radio"
+                name="Info_Search_Admin"
+                id="Info_Filter_3"
+                class=""
+              />
+              <label for="Info_Filter_3">Marca</label>
+            </div>
+            <div class="Input_Div">
+              <input
+                type="radio"
+                name="Info_Search_Admin"
+                id="Info_Filter_6"
+                class=""
+              />
+              <label for="Info_Filter_6">Modelo</label>
+            </div>
+            <div class="Input_Div">
+              <input
+                type="radio"
+                name="Info_Search_Admin"
+                id="Info_Filter_4"
+                class=""
+              />
+              <label for="Info_Filter_4">Color</label>
+            </div>
+          </div>
+          <br />
+          <div class="Input_Div">
+            <input
+              type="text"
+              class="Input_Text"
+              id="Vehicle_Search"
+              placeholder="Buscar"
+            />
+            <button type="button" class="Btn_Sty_1" onclick="Vehicle_List()">
+              <img src="IMG/Search.svg" alt="" />
+              Buscar
+            </button>
+          </div>
+          <br />
+          <table class="" id="Table_Info">
+            <tr class="Table_Up">
+              <td class="td_Title Hiden_Sm">Nombre</td>
+              <td class="td_Title">Placa</td>
+              <td class="td_Title">Tipo</td>
+              <td class="td_Title">Marca</td>
+              <td class="td_Title">Modelo</td>
+              <td class="td_Title">Color</td>
+            </tr>
+          </table>
+          <h3 class="Text_Sty_2">No se encontraron mas Datos</h3>
+          <div class=""></div>
+          <br />
+        </div>
+        <br />
+      </div>
+    </div>
+
+    <!-- [ Pantalla de Carga ] -->
+    <div class="Mn_Loading Hiden" id="Mn_Loading">
+      <h1>Cargando</h1>
+      <div></div>
+    </div>
+
+    <!-- [ Reporte ] -->
+    <div class="Mn_Report Hiden" id="Mn_Report">
+      <div class="Cn_Report">
+        <h2 class="Text_Sty_1 Center">Reporte General</h2>
+        <p>
+          A continuacion describa el motivo del reporte y seleccione a que
+          categoria desea enviarlo.
+        </p>
+        <br />
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <br />
+        <div class="Grid">
+          <button
+            type="button"
+            class="Btn_Sty_4"
+            onclick="GOTO_MENU('Principal')"
+          >
+            <img src="IMG/Undo.svg" alt="" />
+            Volver
+          </button>
+          <button type="button" class="Btn_Sty_1" onclick="Send_Report(0)">
+            <img src="IMG/Document.svg" alt="" />
+            Reclamacion
+          </button>
+          <button type="button" class="Btn_Sty_3" onclick="Send_Report(1)">
+            <img src="IMG/Shield_Alert.svg" alt="" />
+            Reporte de Fallo
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="APP_Alert Hiden" id="APP_Alert">
+      <div class="Cn_Alert">
+        <div class="Alert_Content">
+          <img src="" alt="" class="Alert_IMG" />
+          <div>
+            <h1 id="Alert_TITLE"></h1>
+            <p id="Alert_TEXT"></p>
+          </div>
+        </div>
+        <div class="Alert_Buttons">
+          <button class="Hiden"></button>
+          <button class="Hiden"></button>
+          <button class="Hiden"></button>
+          <button class="Hiden"></button>
+          <button class="Hiden"></button>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="Main_JS.js"></script>
+  </body>
+</html>

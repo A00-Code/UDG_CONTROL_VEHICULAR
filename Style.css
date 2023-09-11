@@ -1,0 +1,718 @@
+/* ####### Variables de Estilo ####### */
+:root {
+  --Color_Html: #eee;
+  --Color_Banner: #004178;
+  --Color_Error: #e03326;
+}
+
+/* ####### Elementos Generales #######*/
+html {
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--Color_Html);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 5px;
+  padding: 0;
+}
+h1,
+h2 {
+  text-transform: uppercase;
+}
+
+p {
+  margin: 2px;
+}
+
+hr {
+  background-color: #888;
+  margin: 5px;
+  height: auto;
+  width: auto;
+}
+
+body {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.Hiden {
+  display: none !important;
+}
+
+label {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  background-color: #fafafa;
+  border: #888 solid 2px;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+label > img {
+  width: 30px;
+}
+/* ####### Estilos Generales #######*/
+/* --- ERROR */
+.ERROR {
+  border: 2px solid #962b1d !important;
+  box-shadow: #962b1d 0 0 3px;
+}
+
+/* --- Tooltips */
+.Tooltip {
+  position: relative;
+  --Height: 30px;
+}
+.Tooltip:hover > .Mn_Tip {
+  display: block;
+}
+
+/* --- Inputs */
+input {
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #000;
+  padding: 8px 15px;
+  margin: auto;
+  border: 2px solid #bbb;
+  border-radius: 5px;
+  outline: none;
+}
+input[type="radio"] {
+   display: none;
+}
+textarea {
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   font-weight: 400;
+}
+
+/* --- Botones */
+button {
+  cursor: pointer;
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+
+  display: inline-flex;
+  flex-wrap: nowrap;
+  gap: 15px;
+  justify-content: flex-start;
+  align-items: center;
+
+  border: 0;
+  border-radius: 5px;
+  padding: 15px;
+  margin: auto;
+  box-shadow: #888 0px 0px 3px;
+  transition: all 0.15s;
+}
+button img {
+  height: 25px;
+  filter: invert();
+}
+
+.Btn_Sty_1,
+.Btn_Sty_2,
+.Btn_Sty_3,
+.Btn_Sty_5 {
+  color: #eee;
+}
+
+.Btn_Sty_1 {
+  background-color: #004480;
+}
+.Btn_Sty_2 {
+  background-color: #0aa553;
+}
+.Btn_Sty_3 {
+  background-color: #962b1d;
+}
+.Btn_Sty_0:hover {
+  background-color: #bababa;
+}
+.Btn_Sty_1:hover {
+  background-color: #073d6d;
+}
+.Btn_Sty_2:hover {
+  background-color: #098f47;
+}
+.Btn_Sty_3:hover {
+  background-color: #81261a;
+}
+.Btn_Sty_4:hover {
+  background-color: #ddd;
+  box-shadow: #444 0 0 8px;
+}
+.Btn_Sty_4 img,
+.Btn_Sty_0 img {
+  filter: none;
+}
+
+/* --- Textos */
+.Text_Sty_1 {
+  font-weight: 600;
+  color: #004178;
+}
+.Text_Sty_2 {
+  font-weight: 600;
+  color: #d11c0f;
+}
+/* --- Tabla */
+
+/* --- Contenedores */
+.Mn_Login,
+.Mn_Recuperar,
+.Mn_Principal_Student,
+.Mn_Historial_Student,
+.Mn_Info_Student,
+.Mn_Registro,
+.Mn_Control,
+.Mn_Historial_Admin,
+.Mn_Info_Admin,
+.Mn_Principal_Admin {
+  overflow: auto;
+  position: fixed;
+  inset: 70px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-content: flex-start;
+  margin: auto;
+  padding: 15px 0 0;
+  height: calc(100% - 80px);
+}
+
+.Cn_Box_Sty_1 {
+  background-color: #dcdcdc;
+  border: 2px solid #888;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.Cn_Box_Sty_2 {
+  background-color: #fafafa;
+  border: 2px solid #888;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0px;
+}
+
+/* ####### Banner #######*/
+.Mn_Banner {
+  display: block;
+  position: fixed;
+  inset: 0 0 auto 0;
+  width: 100vw;
+  z-index: 10;
+}
+.Cn_Banner {
+  position: absolute;
+  inset: 0 0 auto 0;
+  text-align: center;
+  background-color: #004178;
+}
+.Cn_Banner img {
+    max-height: 80px;
+}
+
+/* ####### Alerta #######*/
+.APP_Alert {
+  position: fixed;
+  inset: 0 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000050;
+  z-index: 11;
+}
+.Cn_Alert {
+  text-align: left;
+  color: #000;
+  background-color: #fafafa;
+  border: 5px solid #888;
+  border-radius: 15px;
+  box-shadow: #000 0 0 15px;
+  margin: auto;
+  padding: 10px;
+  width: 80vw;
+  max-width: 720px;
+}
+.Cn_Alert .Alert_Content {
+  display: inline-flex;
+  gap: 15px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+.Cn_Alert .Alert_Content img {
+  width: 120px;
+}
+.Cn_Alert .Alert_Buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 100%;
+}
+.Cn_Alert .Alert_Buttons button {
+  margin: 0 5px;
+  text-transform: uppercase;
+}
+
+/* ####### Tips #######*/
+.Mn_Tip {
+  display: none;
+  position: absolute;
+  inset: 0 0 0 0;
+  z-index: 5;
+}
+.Cn_Tip {
+  position: absolute;
+  inset: auto 0 55px 0;
+  font-size: 0.85rem;
+  font-weight: 400;
+  text-align: left;
+  color: #000;
+  background-color: #dcdcdc;
+  border: 2px solid #888;
+  border-radius: 15px;
+  box-shadow: #000 0 0 5px;
+  padding: 10px;
+  width: calc(100% - 25px);
+  min-width: 250px;
+}
+
+/* ####### Inicio de Sesion #######*/
+.Cn_Login {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: #dcdcdc;
+  border: 5px solid #bbb;
+  border-radius: 15px;
+  box-shadow: #444 0px 0px 15px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  width: 500px;
+  height: auto;
+}
+.Cn_Login > img {
+  width: 100%;
+}
+.Cn_Login input {
+  font-size: 1.25rem;
+  padding: 15px;
+  width: calc(100% - 30px);
+}
+.Cn_Login button {
+  width: 100%;
+  justify-content: center;
+}
+.Cn_Login .Btn_Sty_0 {
+  font-size: 0.85rem;
+}
+
+.Input_Text::placeholder {
+  text-transform: capitalize;
+}
+
+/* ####### Registro #######*/
+.Cn_Registro .Grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 5px 5px;
+}
+.Cn_Registro .Tooltip {
+  text-transform: lowercase;
+  padding: 5px;
+  width: 30px;
+}
+.Cn_Registro {
+  position: absolute;
+  inset: 0 0 0 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  min-width: 520px;
+  width: 80vw;
+  max-width: 700px;
+}
+.Cn_Registro .Cn_Box_Sty_1 {
+  text-align: center;
+  padding: 20px;
+}
+.Cn_Registro .Input_Text {
+  width: calc(100% - 25px);
+  padding: 12px;
+}
+.Cn_Registro .Text_Sty_1 {
+  text-transform: uppercase;
+}
+.Mn_Registro button {
+  justify-content: center;
+  width: 100%;
+}
+.Mn_Registro h2 {
+  text-align: center;
+}
+.Cn_Registro .Cn_Box_Sty_1 .Grid label {
+  width: auto;
+  max-width: 320px;
+}
+.Cn_Registro input[type="radio"] {
+  position: absolute;
+}
+.Cn_Registro input[type="text"] {
+  text-transform: none;
+}
+
+#Register_Form > div:nth-child(10) {
+  display: flex;
+  gap: 10px;
+}
+
+/* ####### Recuperar #######*/
+.Cn_Recuperar {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 20px;
+  min-width: 420px;
+  width: 80vw;
+  max-width: 580px;
+}
+.Cn_Recuperar .Cn_Box_Sty_1 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: #888 0 0 15px;
+  padding: 25px;
+}
+.Cn_Recuperar input {
+  width: calc(100% - 30px);
+  padding: 15px;
+}
+.Cn_Recuperar .Cn_Box_Sty_1 button {
+  width: 100%;
+}
+.Cn_Recuperar .Cn_Box_Sty_1 div {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+/* ####### Principal #######*/
+.Cn_Principal_Student,
+.Cn_Principal_Admin {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  margin: 0 auto;
+  width: 80vw;
+  min-width: 420px;
+  max-width: 680px;
+  height: 100%;
+}
+.Cn_Principal_Student h4,
+.Cn_Principal_Admin h4 {
+  text-transform: uppercase;
+}
+
+.Cn_Principal_Student .Btn_Sty_1,
+.Cn_Principal_Admin .Btn_Sty_1,
+.Cn_Principal_Student .Btn_Sty_3,
+.Cn_Principal_Admin .Btn_Sty_3 {
+  width: 100%;
+  justify-content: center;
+}
+.Cn_Principal_Student img,
+.Cn_Principal_Admin img {
+  width: 100px;
+}
+.Cn_Principal_Admin .Cn_Box_Sty_1,
+.Cn_Principal_Student .Cn_Box_Sty_1 {
+  display: flex;
+  gap: 20px;
+}
+.Cn_Principal_Admin .Cn_Box_Sty_1 div,
+.Cn_Principal_Student .Cn_Box_Sty_1 div {
+  width: 100%;
+  max-width: 525px;
+}
+.Cn_Principal_Admin .Text_Sty_2,
+.Cn_Principal_Student .Text_Sty_2 {
+  margin: auto;
+}
+
+/* ####### Control Vehicular #######*/
+.Cn_Control {
+  position: absolute;
+  inset: 0 0 0 0;
+  margin: 0 auto;
+  min-width: 600px;
+  width: 90vw;
+  max-width: 1200px;
+}
+.Sm_Grid {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+.Sm_Grid h2 {
+   text-align: center;
+  width: 100%;
+}
+.Sm_Grid > div {
+  width: 20%;
+}
+
+.Cn_Control td,
+.Cn_Historial_Admin td,
+.Cn_Hitorial_Student td,
+.Cn_Info_Admin td {
+  border: 2px solid #bababa;
+  border-radius: 10px;
+  padding: 4px 2px;
+  margin: auto;
+  text-transform: uppercase;
+}
+.Cn_Control .Flex {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: stretch;
+  align-items: stretch;
+  width: 100%;
+}
+.Cn_Control .Flex > div {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+.Cn_Control .Cn_Box_Sty_1 > .Input_Div input,
+.Cn_Hitorial_Student input,
+.Cn_Historial_Admin input,
+.Cn_Info_Admin input {
+   font-size: 1.2rem;
+   padding: 15px;
+   width: calc(100% - 150px);
+}
+.Cn_Control .Cn_Box_Sty_1 > .Input_Div,
+.Cn_Hitorial_Student .Cn_Box_Sty_1 > .Input_Div,
+.Cn_Historial_Admin .Cn_Box_Sty_1 > .Input_Div,
+.Cn_Info_Admin .Cn_Box_Sty_1 > .Input_Div {
+   display: flex;
+   flex-wrap: nowrap;
+   gap: 10px;
+}
+
+.Cn_Control .Btn_Sty_1 {
+  min-width: 160px;
+  justify-content: center;
+
+}
+.Cn_Control span {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.Cn_Control span .Btn_Sty_1 {
+  width: 100%;
+}
+table {
+  width: 100%;
+}
+.Cn_Control .td_Title,
+.Cn_Historial_Admin .td_Title,
+.Cn_Info_Admin .td_Title,
+.Cn_Hitorial_Student .td_Title {
+   font-weight: 600;
+  background-color: #bababa;
+  border: 2px solid #888;
+  border-radius: 5px;
+  padding: 10px;
+}
+table td {
+  text-align: center;
+}
+
+/* ####### Historial Estudiante y Admin #######*/
+.Cn_Hitorial_Student,
+.Cn_Historial_Admin,
+.Cn_Info_Admin {
+  position: absolute;
+  inset: 0 0 0 0;
+  margin: 0 auto;
+  min-width: 600px;
+  width: 90vw;
+  max-width: 1200px;
+}
+
+.Cn_Hitorial_Student h3,
+.Cn_Historial_Admin h3,
+.Cn_Info_Admin h3 {
+  text-align: center;
+  padding: 10px;
+}
+.Cn_Info_Admin .Cn_Box_Sty_1 .Grid,
+.Cn_Hitorial_Student .Cn_Box_Sty_1 .Grid,
+.Cn_Historial_Admin .Cn_Box_Sty_1 .Grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.Cn_Box_Sty_1 .Grid label,
+.Cn_Box_Sty_1 .Flex label {
+  cursor: pointer;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  background-color: #ccc;
+  border: 2px solid #888;
+  border-radius: 5px;
+  padding: 10px;
+  margin: auto;
+  width: calc(12vw - 10px);
+  max-width: 160px;
+}
+.Grid input[type="radio"]:checked + label,
+.Flex input[type="radio"]:checked + label {
+  background-color: #888;
+}
+
+/* ####### Informacion Personal #######*/
+.Cn_Info_Student {
+  position: absolute;
+  inset: 0 0 0 0;
+  width: 80vw;
+  max-width: 1200px;
+  margin: auto;
+}
+.Info_IMG {
+  object-fit: cover;
+  border: 2px solid #000;
+  border-radius: 5px;
+  margin: 0px;
+  min-width: 220px;
+  width: 30vw;
+  max-width: 350px;
+  min-height: 220px;
+  height: 30vw;
+  max-height: 350px;
+}
+.Cn_Info_Student .Grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-around;
+  width: 100%;
+}
+.Cn_Info_Student .Grid .Cn_Box_Sty_2 {
+  width: calc(50% - 30px);
+}
+.Cn_Info_Student h4,
+.Cn_Info_Student h2 {
+  text-align: center;
+}
+.Cn_Info_Student .Btn_Sty_1,
+.Cn_Info_Student .Btn_Sty_3 {
+  width: calc(50% - 10px);
+}
+/* #######  #######*/
+.Mn_Report {
+  position: absolute;
+  inset: 65px 0 0 0;
+  display: flex;
+  flex-direction: column;
+}
+.Cn_Report {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: center;
+   background-color: #cdcdcd;
+   box-shadow: #888 0 0 10px;
+   border: #888 solid 2px;
+   border-radius: 10px;
+   padding: 20px;
+   margin: auto;
+   width: 80%;
+   max-width: 800px;
+   height: 80%;
+   min-height: 500px;
+}
+.Cn_Report textarea {
+  font-size: 1.2rem;
+  padding: 10px;
+  min-width: 420px;
+  width: calc(100% - 20px);
+  height: 100%;
+}
+.Cn_Report .Grid {
+   display: flex;
+   gap: 10px;
+   width: 100%;
+}
+.Cn_Report .Grid button {
+   width: 100%;
+}
+
+.Mn_Loading {
+  position: absolute;
+  inset: 65px 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Mn_Loading div {
+  position: absolute;
+  border: 15px solid #dcdcdc;
+  border-top: 15px solid #004178;
+  border-bottom: 15px solid #004178;
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  z-index: -1;
+  animation: LOADING 2s linear infinite;
+}
+
+@keyframes LOADING {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 760px) {
+  html {
+    font-size: 14px;
+  }
+}
