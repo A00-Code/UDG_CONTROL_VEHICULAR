@@ -936,13 +936,19 @@ function History_List(Force = false) {
 
         for (let x = TOTAL; x >= 0; x--) {
           try {
+            if(WEB_DATA['USUARIO']['LEVEL'] != "DEV" && WEB_DATA["HISTORIAL"][x]["DUEÑO"] != WEB_DATA['USUARIO']['ID']){ 
+              continue;
+            }
             let NRow = TABLE.insertRow(1);
             let NCell1 = NRow.insertCell(0);
             let NCell2 = NRow.insertCell(1);
             let NCell3 = NRow.insertCell(2);
             let NCell4 = NRow.insertCell(3);
             let NCell5 = NRow.insertCell(4);
-            let NCell6 = NRow.insertCell(5);
+            let NCell6 = undefined;
+            if(WEB_DATA['USUARIO']['LEVEL'] != "DEV"){
+              NCell6 = NRow.insertCell(5);
+            }
 
             if (WEB_CONFIG["CONEXION"]["METHOD"] != "LOCAL") {
               NCell1.innerHTML = WEB_DATA["HISTORIAL"][x]["FECHA"];
@@ -950,20 +956,22 @@ function History_List(Force = false) {
               NCell3.innerHTML = WEB_DATA["HISTORIAL"][x]["HORA"];
               NCell4.innerHTML = WEB_DATA["HISTORIAL"][x]["ID"];
               NCell5.innerHTML = WEB_DATA["HISTORIAL"][x]["DUEÑO"] ?? "";
-              NCell6.innerHTML = WEB_DATA["HISTORIAL"][x]["MARCA"] ?? "";
+              if(WEB_DATA['USUARIO']['LEVEL'] != "DEV"){
+                NCell6.innerHTML = WEB_DATA["HISTORIAL"][x]["MARCA"] ?? "";
+              }
             } else {
               NCell1.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["FECHA"];
               NCell2.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["MOVIMIENTO"];
               NCell3.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["HORA"];
               NCell4.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["ID"];
               NCell5.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["DUEÑO"] ?? "";
-              NCell6.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["MARCA"] ?? "";
+              if(WEB_DATA['USUARIO']['LEVEL'] != "DEV"){
+                NCell6.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["MARCA"] ?? "";
+              }
             }
             LIST_VEHICLES.push(WEB_DATA["HISTORIAL"][x]["ID"]);
           } catch {}
         }
-        
-        
         
         setTimeout(() => {
           if(WEB_CONFIG['CONEXION']['METHOD'] != "LOCAL"){
