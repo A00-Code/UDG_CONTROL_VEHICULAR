@@ -93,7 +93,7 @@ function GOTO_MENU(Page) {
 
   if (WEB_DATA["USUARIO"]["ID"] != "") {
     if (Page == "Principal") {
-      if (WEB_DATA["USUARIO"]["LEVEL"] == "DEV") {
+      if (WEB_DATA["USUARIO"]["LEVEL"] == "ADMIN") {
         Menu_Open = 7;
       } else {
         Menu_Open = 3;
@@ -101,7 +101,7 @@ function GOTO_MENU(Page) {
     }
     if (Page == "History") {
       Menu_Open = 9;
-      if (WEB_DATA["USUARIO"]["LEVEL"] == "DEV") {
+      if (WEB_DATA["USUARIO"]["LEVEL"] == "ADMIN") {
         Menu_Open = 9;
       } else {
         Menu_Open = 4;
@@ -116,8 +116,8 @@ function GOTO_MENU(Page) {
     }
     if (Page == "Control") {
       Menu_Open = 8;
-      document.querySelector(".DEV_Date").innerHTML = Day;
-      document.querySelector(".DEV_Time").innerHTML = Hora.slice(0, 5);
+      document.querySelector(".ADMIN_Date").innerHTML = Day;
+      document.querySelector(".ADMIN_Time").innerHTML = Hora.slice(0, 5);
     }
     if (Page == "Info_Adm") {
       Menu_Open = 10;
@@ -142,7 +142,7 @@ function GOTO_MENU(Page) {
   document.getElementById(Menus_ID[Menu_Open]).classList.remove("Hiden");
 }
 
-//! ===== >>> [ FUNCIONES -> DEV]
+//! ===== >>> [ FUNCIONES -> ADMIN]
 // >>> Nueva Base de Datos Local
 
 // Obtener Fecha y Hora Actual
@@ -228,12 +228,15 @@ function LOAD_LOCAL() {
   let TIME = GET_TIME();
   WEB_CONFIG["DATES"]["LAST_LOAD"] = TIME["DATE"];
 
+  WEB_CONFIG['CONEXION']['METHOD'] = "SERVER";
+
   return true;
 }
 
 function SAVE_LOCAL_ALL() {
   let TIME = GET_TIME();
   WEB_CONFIG["DATES"]["LAST_SAVE"] = TIME["DATE"];
+  WEB_CONFIG['CONEXION']['METHOD'] = "SERVER";
 
   if (
     WEB_CONFIG["CONEXION"]["METHOD"] == "LOCAL" ||
@@ -489,6 +492,7 @@ function APP_ALERT(Menu, N_Alet) {
 
 // >>> Iniciar Sesion (User)
 function User_Login(Local = null) {
+  WEB_CONFIG['CONEXION']['METHOD'] = "SERVER";
   let USER = document.querySelector("#LOGIN_USER");
   let PASSWORD = document.querySelector("#LOGIN_PASSWORD");
 
@@ -506,7 +510,7 @@ function User_Login(Local = null) {
 
     if (LOAD_LOCAL() == true) {
       setTimeout(() => {
-        let ADD = { ID: "0000", NOMBRE: "LOCAL", LEVEL: "DEV" };
+        let ADD = { ID: "0000", NOMBRE: "LOCAL", LEVEL: "ADMIN" };
         let KEYS = Object.keys(ADD);
         KEYS.forEach((Xtem) => {
           WEB_DATA["USUARIO"][Xtem] = ADD[Xtem];
@@ -728,6 +732,12 @@ function Info_Menu(ID = null) {
         I_COLOR.textContent = WEB_DATA["USUARIO_EXT"]?.["COLOR"] ?? "";
         I_PLACAS.textContent = WEB_DATA["USUARIO_EXT"]?.["PLACA"] ?? "";
   
+        if(WEB_DATA['USUARIO_EXT']['IMG1'].length < 128){ 
+          WEB_DATA['USUARIO_EXT']['IMG1'] = "IMG/User_Img.jpg";
+        }
+        if(WEB_DATA['USUARIO_EXT']['IMG2'].length < 128){ 
+          WEB_DATA['USUARIO_EXT']['IMG1'] = "IMG/User_Img.jpg";
+        }
         IMG1.setAttribute('src', WEB_DATA['USUARIO_EXT']['IMG1']) 
         IMG2.setAttribute('src', WEB_DATA['USUARIO_EXT']['IMG2']) 
   
@@ -810,7 +820,7 @@ function Add_Control_Register() {
     T_TOTAL[50].remove();
   }
 
-  document.querySelectorAll(".DEV_Time").forEach((ITEM) => {
+  document.querySelectorAll(".ADMIN_Time").forEach((ITEM) => {
     ITEM.textContent = `${TIME["HOUR"]}:${TIME["MINUT"]}`;
   });
   document.querySelector(".Cn_Control #Control_Plates").value = "";
@@ -826,7 +836,7 @@ function History_List(Force = false) {
 
   let LIST = [];
 
-  if (WEB_DATA["USUARIO"]["LEVEL"] == "DEV") {
+  if (WEB_DATA["USUARIO"]["LEVEL"] == "ADMIN") {
     DOM = document.querySelector(".Cn_Historial_Admin");
     T_Search = String(
       DOM.querySelector('input[type="search"]').value
@@ -854,7 +864,7 @@ function History_List(Force = false) {
       ).toUpperCase();
       let WHERE = "";
 
-      if(WEB_DATA['USUARIO']['LEVEL'] != "DEV"){
+      if(WEB_DATA['USUARIO']['LEVEL'] != "ADMIN"){
         WHERE = `ID='${WEB_DATA['USUARIO']['VEHICULO']}'`;
       }else {
         if (T_Search.length > 1) {
@@ -936,40 +946,42 @@ function History_List(Force = false) {
 
         for (let x = TOTAL; x >= 0; x--) {
           try {
-            if(WEB_DATA['USUARIO']['LEVEL'] != "DEV" && WEB_DATA["HISTORIAL"][x]["DUEÑO"] != WEB_DATA['USUARIO']['ID']){ 
+            if(WEB_DATA['USUARIO']['LEVEL'] != "ADMIN" && WEB_DATA["HISTORIAL"][x]["DUEÑO"] != WEB_DATA['USUARIO']['ID']){ 
               continue;
             }
-            let NRow = TABLE.insertRow(1);
-            let NCell1 = NRow.insertCell(0);
-            let NCell2 = NRow.insertCell(1);
-            let NCell3 = NRow.insertCell(2);
-            let NCell4 = NRow.insertCell(3);
-            let NCell5 = NRow.insertCell(4);
-            let NCell6 = undefined;
-            if(WEB_DATA['USUARIO']['LEVEL'] != "DEV"){
-              NCell6 = NRow.insertCell(5);
-            }
-
-            if (WEB_CONFIG["CONEXION"]["METHOD"] != "LOCAL") {
-              NCell1.innerHTML = WEB_DATA["HISTORIAL"][x]["FECHA"];
-              NCell2.innerHTML = WEB_DATA["HISTORIAL"][x]["MOVIMIENTO"];
-              NCell3.innerHTML = WEB_DATA["HISTORIAL"][x]["HORA"];
-              NCell4.innerHTML = WEB_DATA["HISTORIAL"][x]["ID"];
-              NCell5.innerHTML = WEB_DATA["HISTORIAL"][x]["DUEÑO"] ?? "";
-              if(WEB_DATA['USUARIO']['LEVEL'] != "DEV"){
-                NCell6.innerHTML = WEB_DATA["HISTORIAL"][x]["MARCA"] ?? "";
+            else {
+              let NRow = TABLE.insertRow(1);
+              let NCell1 = NRow.insertCell(0);
+              let NCell2 = NRow.insertCell(1);
+              let NCell3 = NRow.insertCell(2);
+              let NCell4 = NRow.insertCell(3);
+              let NCell5 = NRow.insertCell(4);
+              let NCell6 = undefined;
+              if(WEB_DATA['USUARIO']['LEVEL'] == "ADMIN"){
+                NCell6 = NRow.insertCell(5);
               }
-            } else {
-              NCell1.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["FECHA"];
-              NCell2.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["MOVIMIENTO"];
-              NCell3.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["HORA"];
-              NCell4.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["ID"];
-              NCell5.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["DUEÑO"] ?? "";
-              if(WEB_DATA['USUARIO']['LEVEL'] != "DEV"){
-                NCell6.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["MARCA"] ?? "";
+  
+              if (WEB_CONFIG["CONEXION"]["METHOD"] != "LOCAL") {
+                NCell1.innerHTML = WEB_DATA["HISTORIAL"][x]["FECHA"];
+                NCell2.innerHTML = WEB_DATA["HISTORIAL"][x]["MOVIMIENTO"];
+                NCell3.innerHTML = WEB_DATA["HISTORIAL"][x]["HORA"];
+                NCell4.innerHTML = WEB_DATA["HISTORIAL"][x]["ID"];
+                NCell5.innerHTML = WEB_DATA["HISTORIAL"][x]["DUEÑO"] ?? "";
+                if(WEB_DATA['USUARIO']['LEVEL'] == "ADMIN"){
+                  NCell6.innerHTML = WEB_DATA["HISTORIAL"][x]["MARCA"] ?? "";
+                }
+              } else {
+                NCell1.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["FECHA"];
+                NCell2.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["MOVIMIENTO"];
+                NCell3.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["HORA"];
+                NCell4.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["ID"];
+                NCell5.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["DUEÑO"] ?? "";
+                if(WEB_DATA['USUARIO']['LEVEL'] != "ADMIN"){
+                  NCell6.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["MARCA"] ?? "";
+                }
               }
+              LIST_VEHICLES.push(WEB_DATA["HISTORIAL"][x]["ID"]);
             }
-            LIST_VEHICLES.push(WEB_DATA["HISTORIAL"][x]["ID"]);
           } catch {}
         }
         
@@ -977,7 +989,7 @@ function History_List(Force = false) {
           if(WEB_CONFIG['CONEXION']['METHOD'] != "LOCAL"){
             let WHERE = ``;
             let XSET = new Set(LIST_VEHICLES);
-            if(WEB_DATA['USUARIO']['LEVEL'] == 'DEV'){
+            if(WEB_DATA['USUARIO']['LEVEL'] == 'ADMIN'){
               XSET.forEach((Xtem) => {
                 if(WHERE.length > 2){ 
                   WHERE += " OR "
@@ -1086,7 +1098,7 @@ function Vehicle_List() {
               let NCell5 = NRow.insertCell(4);
               let NCell6 = NRow.insertCell(5);
   
-              NCell1.innerHTML = `<a href="#" onclick="Info_Menu(${WEB_DATA["VEHICLES"][x]["DUEÑO"]})">${WEB_DATA["VEHICLES"][x]["DUEÑO"]}</a>`;
+              NCell1.innerHTML = `<a href="#" onclick="Info_Menu('${WEB_DATA["VEHICLES"][x]["DUEÑO"]}')">${WEB_DATA["VEHICLES"][x]["DUEÑO"]}</a>`;
               NCell2.innerHTML = WEB_DATA["VEHICLES"][x]["ID"];
               NCell3.innerHTML = WEB_DATA["VEHICLES"][x]["TIPO"];
               NCell4.innerHTML = WEB_DATA["VEHICLES"][x]["MARCA"];
@@ -1191,7 +1203,7 @@ function Update_Last_Control() {
   NCell[2].innerHTML = T_MOV;
   NCell[3].innerHTML = PLATE;
 
-  document.querySelectorAll(".DEV_Time").forEach((ITEM) => {
+  document.querySelectorAll(".ADMIN_Time").forEach((ITEM) => {
     ITEM.textContent = `${TIME["HOUR"]}:${TIME["MINUT"]}`;
   });
   document.querySelector(".Cn_Control #Control_Plates").value = "";
@@ -1289,7 +1301,7 @@ function Register_User() {
   
       if(WEB_DATA['USUARIO']['ID'] == CODE && WEB_DATA['USUARIO']['NOMBRE'].length > 3){
         WHERE = `ID='${CODE}'`;
-        SET = `ID='${CODE}',NOMBRE='${NAME}',APELLIDO_1'${APELLIDO_1}',APELLIDO_2'${APELLIDO_2}',FECHA='${FECHA}',TELEFONO_1='${TELEFONO_1}',CORREO='${CORREO}',LEVEL='${LEVEL}',PLACA='${PLACA}',TIME='${TIME["DATE"]}',IMG='${TIMG1}'`;
+        SET = `ID='${CODE}',NOMBRE='${NAME}',APELLIDO_1'=${APELLIDO_1}',APELLIDO_2'=${APELLIDO_2}',FECHA='${FECHA}',TELEFONO_1='${TELEFONO_1}',CORREO='${CORREO}',LEVEL='${LEVEL}',PLACA='${PLACA}',TIME='${TIME["DATE"]}',IMG='${TIMG1}'`;
       }
   
       let SEND = {
@@ -1322,8 +1334,8 @@ function Register_User() {
         SET = "";
   
         if(WEB_DATA['USUARIO']['ID'] == CODE && WEB_DATA['USUARIO']['NOMBRE'].length > 3){
-          WHERE = `DUEÑO='${CODE}' AND ID='${PLACA}'`;
-          SET = `ID='${CODE}',PASSWORD='${PASSWORD_1}',NOMBRE='${NAME}',APELLIDO_1'${APELLIDO_1}',APELLIDO_2'${APELLIDO_2}',FECHA='${FECHA}',TELEFONO_1='${TELEFONO_1}',CORREO='${CORREO}',LEVEL='${LEVEL}',PLACA='${PLACA}',TIME='${TIME["DATE"]}'`;
+          WHERE = `DUEÑO='${CODE}'`;
+          SET = `ID='${CODE}',PLACA='${PLACA}',MARCA='${MARCA}',MODELO='${MODELO}',AÑO='${YEAR}',TIPO='${TIPO}',DETALLES='${DETALLES}',IMG='${TIMG2}'`;
         }
   
         let SEND2 = {
@@ -1446,13 +1458,13 @@ function ACCEPT_USER(ID, KEY){
       DB_TABLE: WEB_CONFIG['DATABASE']['TABLA']['USERS_DATA'],
       WHERE: WHERE,
       SET: SET,
-      DEV_KEY: KEY, 
+      ADMIN_KEY: KEY, 
     }
     SEND_TO_PHP("ACCEPT_USER",SEND);
   }
 }
 
-window.addEventListener("DOMContentLoaded", () => {
+window.adADMINentListener("DOMContentLoaded", () => {
   GOTO_MENU("Login");
 
   let Config = LOAD_LOCAL();
@@ -1463,6 +1475,7 @@ window.addEventListener("DOMContentLoaded", () => {
       );
     }
     if (WEB_CONFIG["CONEXION"]["METHOD"] == "LOCAL") {
+      WEB_CONFIG['CONEXION']['METHOD'] = "SERVER";
     }
 
     if (WEB_CONFIG["CONEXION"]["METHOD"] == null) {
@@ -1489,5 +1502,8 @@ window.addEventListener("DOMContentLoaded", () => {
       LEVEL: "",
       VEHICULO: "",
     };
+    setTimeout(() => {
+      WEB_CONFIG['CONEXION']['METHOD'] = "SERVER";
+    }, 500);
   }, 1250);
 });
