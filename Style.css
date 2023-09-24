@@ -179,6 +179,9 @@ button img {
 .Mn_Control,
 .Mn_Historial_Admin,
 .Mn_Info_Admin,
+.Mn_SReportes,
+.Mn_SUsers,
+.Mn_SControl,
 .Mn_Principal_Admin {
   overflow: auto;
   position: fixed;
@@ -700,6 +703,66 @@ table td {
   height: 250px;
   z-index: -1;
   animation: LOADING 2s linear infinite;
+}
+
+.Cn_SReportes .Flex, .Cn_SUsers .Flex, .Cn_SControl .Flex {
+  display: flex;
+  gap: 10px;
+  justify-content: stretch;
+  align-items: flex-start;
+}
+
+.Cn_SReportes, .Cn_SUsers, .Cn_SControl {
+  background-color: #fafafa;
+  border: #888 solid 3px;
+  border-radius: 15px;
+  box-shadow: #888 0 0 15px;
+  margin: auto;
+  padding: 15px;
+  width: 80%;
+  max-width: 740px;
+}
+
+.Cn_SReportes button, .Cn_SUsers button, .Cn_SControl button {
+  width: 100%;
+}
+.Cn_SReportes ul, .Cn_SUsers ul, .Cn_SControl ul {
+  overflow: auto;
+  list-style: none;
+  padding: 5px;
+  width: 320px;
+  height: 100%;
+  max-height: 400px;
+}
+.Cn_SReportes .li, .Cn_SUsers .li, .Cn_SControl .li {
+  overflow: hidden;
+  font-size: 1rem;
+  padding: 10px;
+  margin-bottom: 8px;
+  &:hover {
+    background-color: #ccc;
+  }
+}
+.Cn_SReportes p{
+  padding: 3px;
+}
+.Cn_SUsers p, .Cn_SControl p {
+  font-size: 1.2rem;
+  padding: 5px;
+}
+
+.Cn_SReportes div, .Cn_SUsers div, .Cn_SControl div {
+  width: 100%;
+}
+.Cn_SReportes textarea {
+  font-size: 1.25rem;
+  padding: 10px;
+  width: calc(100% - 25px);
+  height: 320px;
+}
+
+.Mn_SReportes, .Mn_SUsers, .Mn_SControl { 
+  z-index: 15;
 }
 
 @keyframes LOADING {

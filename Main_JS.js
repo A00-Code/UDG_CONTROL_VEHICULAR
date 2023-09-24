@@ -83,8 +83,7 @@ var Menus_ID = [
 // >>> Cambiar de Pagina
 function GOTO_MENU(Page) {
   let TIME = GET_TIME();
-  let Day = TIME["DATE"],
-    Hora = TIME["TIME"];
+  let Hora = TIME["TIME"];
 
   let Menu_Open = -1;
   for (let x in Menus_ID) {
@@ -93,15 +92,25 @@ function GOTO_MENU(Page) {
 
   if (WEB_DATA["USUARIO"]["ID"] != "") {
     if (Page == "Principal") {
-      if (WEB_DATA["USUARIO"]["LEVEL"] == "ADMIN") {
+      if (WEB_DATA["USUARIO"]["LEVEL"] == "ADMIN" || WEB_DATA["USUARIO"]["LEVEL"] == "S_ADMIN") {
         Menu_Open = 7;
+        if(WEB_DATA["USUARIO"]["LEVEL"] == "S_ADMIN"){
+          document.querySelector('#Mn_SControl_ACC').classList.remove('Hiden')
+          document.querySelector('#Mn_SUsers_ACC').classList.remove('Hiden')
+          document.querySelector('#Mn_SReport_ACC').classList.remove('Hiden')
+        }
+        else{
+          document.querySelector('#Mn_SControl_ACC').classList.add('Hiden')
+          document.querySelector('#Mn_SUsers_ACC').classList.add('Hiden')
+          document.querySelector('#Mn_SReport_ACC').classList.add('Hiden')  
+        }
       } else {
         Menu_Open = 3;
       }
     }
     if (Page == "History") {
       Menu_Open = 9;
-      if (WEB_DATA["USUARIO"]["LEVEL"] == "ADMIN") {
+      if (WEB_DATA["USUARIO"]["LEVEL"] == "ADMIN" || WEB_DATA["USUARIO"]["LEVEL"] == "S_ADMIN") {
         Menu_Open = 9;
       } else {
         Menu_Open = 4;
@@ -116,8 +125,8 @@ function GOTO_MENU(Page) {
     }
     if (Page == "Control") {
       Menu_Open = 8;
-      document.querySelector(".ADMIN_Date").innerHTML = Day;
-      document.querySelector(".ADMIN_Time").innerHTML = Hora.slice(0, 5);
+      document.querySelector(".DEV_Date").innerHTML = TIME["DATE"];
+      document.querySelector(".DEV_Time").innerHTML = Hora.slice(0, 5);
     }
     if (Page == "Info_Adm") {
       Menu_Open = 10;
@@ -300,6 +309,13 @@ function SEND_TO_PHP(Funcion, Data) {
           WEB_DATA["VEHICLES"]["TOTAL"] = XX;
 
         }
+      } else if (Funcion == "S_ADMIN"){
+        if(WEB_DATA?.['S_ADMIN'] == undefined){
+          WEB_DATA['S_ADMIN'] = {};
+        }
+        
+        WEB_DATA['S_ADMIN']['REPORTES'] = JRes[0];
+        WEB_DATA['S_ADMIN']['USERS'] = JRes[1];
       }
     })
     .catch((Err) => {
@@ -563,9 +579,22 @@ function User_Login(Local = null) {
             if (WEB_DATA["USUARIO"]?.["ID"] == String(USER.value)) {
               USER.classList.remove("ERROR");
               PASSWORD.classList.remove("ERROR");
-              if(WEB_DATA["USUARIO"]["ULTIMA_VEZ"] != "POR_REGISTRAR"){
+              if(WEB_DATA["USUARIO"]["ULTIMA_VEZ"] != "POR_REGISTRAR" && WEB_DATA["USUARIO"]["ULTIMA_VEZ"] != "DELETE" ){
                 setTimeout(() => {
                   GOTO_MENU("Principal");
+                  if(WEB_DATA['USUARIO']['LEVEL'] == "S_ADMIN"){
+                    let KEYS2 = "ID, NOMBRE, APELLIDO_1, APELLIDO_2, FECHA, TELEFONO, CORREO, LEVEL, VEHICULO";
+                    let SEND = {
+                      DB_TABLE1: WEB_CONFIG["DATABASE"]["TABLA"]["REPORTES"],
+                      DB_TABLE2: WEB_CONFIG["DATABASE"]["TABLA"]["USERS_DATA"],
+                      KEYS1: "*",
+                      KEYS2: KEYS2,
+                      WHERE1: `RESUELTO='0'`,
+                      WHERE2: `ULTIMA_VEZ='POR_REGISTRAR'`,
+                      LIMIT: 'LIMIT 150',
+                    };
+                    SEND_TO_PHP('S_ADMIN',SEND);
+                  }
                 }, 100);
               } else {
                 setTimeout(() => {
@@ -836,7 +865,7 @@ function History_List(Force = false) {
 
   let LIST = [];
 
-  if (WEB_DATA["USUARIO"]["LEVEL"] == "ADMIN") {
+  if (WEB_DATA["USUARIO"]["LEVEL"] == "ADMIN" || WEB_DATA["USUARIO"]["LEVEL"] == "S_ADMIN") {
     DOM = document.querySelector(".Cn_Historial_Admin");
     T_Search = String(
       DOM.querySelector('input[type="search"]').value
@@ -864,7 +893,7 @@ function History_List(Force = false) {
       ).toUpperCase();
       let WHERE = "";
 
-      if(WEB_DATA['USUARIO']['LEVEL'] != "ADMIN"){
+      if(WEB_DATA['USUARIO']['LEVEL'] != "ADMIN" && WEB_DATA['USUARIO']['LEVEL'] != "S_ADMIN"){
         WHERE = `ID='${WEB_DATA['USUARIO']['VEHICULO']}'`;
       }else {
         if (T_Search.length > 1) {
@@ -874,6 +903,9 @@ function History_List(Force = false) {
           WHERE = `${WHERE_KEY} LIKE '%${T_Search}%'`;
         }else {
           WHERE = `ID_ABS >= 0`;
+          if(WEB_DATA['USUARIO']['LEVEL'] != "S_ADMIN"){
+            WHERE += `AND MOVIMIENTO !='DELETE'`;
+          }
         }
       }
 
@@ -946,7 +978,7 @@ function History_List(Force = false) {
 
         for (let x = TOTAL; x >= 0; x--) {
           try {
-            if(WEB_DATA['USUARIO']['LEVEL'] != "ADMIN" && WEB_DATA["HISTORIAL"][x]["DUEÑO"] != WEB_DATA['USUARIO']['ID']){ 
+            if(WEB_DATA['USUARIO']['LEVEL'] != "ADMIN" && WEB_DATA['USUARIO']['LEVEL'] != "S_ADMIN" && WEB_DATA["HISTORIAL"][x]["DUEÑO"] != WEB_DATA['USUARIO']['ID']){ 
               continue;
             }
             else {
@@ -957,7 +989,7 @@ function History_List(Force = false) {
               let NCell4 = NRow.insertCell(3);
               let NCell5 = NRow.insertCell(4);
               let NCell6 = undefined;
-              if(WEB_DATA['USUARIO']['LEVEL'] == "ADMIN"){
+              if(WEB_DATA['USUARIO']['LEVEL'] == "ADMIN" || WEB_DATA['USUARIO']['LEVEL'] == "S_ADMIN"){
                 NCell6 = NRow.insertCell(5);
               }
   
@@ -976,7 +1008,7 @@ function History_List(Force = false) {
                 NCell3.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["HORA"];
                 NCell4.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["ID"];
                 NCell5.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["DUEÑO"] ?? "";
-                if(WEB_DATA['USUARIO']['LEVEL'] != "ADMIN"){
+                if(WEB_DATA['USUARIO']['LEVEL'] != "ADMIN" && WEB_DATA['USUARIO']['LEVEL'] != "S_ADMIN"){
                   NCell6.innerHTML = WEB_DATA["HISTORIAL"][LIST[x]]["MARCA"] ?? "";
                 }
               }
@@ -1378,7 +1410,7 @@ function Register_User() {
   }
   GOTO_MENU("Loading");
   setTimeout(() => {
-    GOTO_MENU("Login");
+    GOTO_MENU('Principal');
     DOM.querySelector('input[id="R_Code"]').value = "";
     DOM.querySelector('input[id="User_Name"]').value = "";
     DOM.querySelector('input[id="User_Date"]').value = "";
@@ -1464,7 +1496,151 @@ function ACCEPT_USER(ID, KEY){
   }
 }
 
-window.adADMINentListener("DOMContentLoaded", () => {
+function S_ADMIN(Menu, ID, Action){
+  Menu = Menu.toUpperCase()
+  if(WEB_CONFIG['CONEXION']['METHOD'] == "LOCAL"){ return false;}
+  if(WEB_DATA['USUARIO']['LEVEL'] != "S_ADMIN"){ return false;}
+
+  let DOM = undefined;
+  let SET = undefined;
+  let SEND = {
+    DB_TABLE: "",
+    WHERE: "",
+    SET:""
+  }
+
+  if(Menu == "REPORT"){
+    DOM = document.querySelector('#Mn_SReportes');
+    SET = WEB_DATA['S_ADMIN']?.['REPORTES'];
+    SEND["DB_TABLE"] = WEB_CONFIG['DATABASE']['TABLA']['REPORTES'];
+  } else if(Menu == "USERS"){
+    DOM = document.querySelector('#Mn_SUsers');
+    SET = WEB_DATA['S_ADMIN']?.['USERS'];
+    SET = WEB_DATA['S_ADMIN']?.['USERS'];
+    SEND["DB_TABLE"] = WEB_CONFIG['DATABASE']['TABLA']['USERS_DATA'];
+  } else if(Menu == "CONTROL"){
+    DOM = document.querySelector('#Mn_SControl');
+    SET = WEB_DATA['HISTORIAL'];
+    SEND["DB_TABLE"] = WEB_CONFIG['DATABASE']['TABLA']['HISTORIAL'];
+  }
+  if(SET == undefined){ return false}
+  if(ID == "NO"){
+    DOM.classList.remove('Hiden');
+    let XUL = DOM.querySelector('ul');
+    let XLI = XUL.querySelectorAll('li');
+    XLI.forEach((X) => { X.remove();})
+
+    let KEYS = undefined;
+    KEYS = Object.keys(SET)
+    XKEY = KEYS.length;
+    
+    for(let X=0; X < XKEY; X++){
+      let Item = document.createElement('li');
+      if(Menu == "USERS"){
+        Item.innerHTML = `<button type="button" class="li" onclick="S_ADMIN('${Menu}',${X},0)">${SET[KEYS[X]]["ID"]}</button>`;
+      } else {
+        Item.innerHTML = `<button type="button" class="li" onclick="S_ADMIN('${Menu}',${X},0)">${SET[KEYS[X]]["ID"]} - ${SET[KEYS[X]]["FECHA"]}</button>`;
+      }
+      XUL.appendChild(Item);
+
+      if(Menu == "CONTROL"){
+        if(SET[KEYS[X]]["MOVIMIENTO"] == "DELETE"){Item.querySelector('.li').style.color = "#f00";}
+      } if(Menu == "REPORT") {
+        if(SET[KEYS[X]]["RESUELTO"] == "9"){Item.querySelector('.li').style.color = "#f00";}
+      }
+    }
+    
+  } else {
+    if(Action == -1){ DOM.classList.add('Hiden');}
+    else{
+      let TIME = GET_TIME();
+      let KEYS = Object.keys(SET)
+
+      if(Action == 0){
+        let ITEMS = undefined;
+        if(Menu == "REPORT"){
+          let BDOM1 = DOM.querySelector('button.Btn_Sty_3');
+          let BDOM2 = DOM.querySelector('button.Btn_Sty_2');
+          BDOM1.setAttribute('onclick',`S_ADMIN('${Menu}',${ID},'DEL')`);
+          BDOM2.setAttribute('onclick',`S_ADMIN('${Menu}',${ID},1)`);
+          ITEMS = DOM.querySelectorAll('*[item]');
+        } else if(Menu == "CONTROL"){
+          let BDOM1 = DOM.querySelector('button.Btn_Sty_3');
+          BDOM1.setAttribute('onclick',`S_ADMIN('${Menu}',${ID},'DEL')`);
+          ITEMS = DOM.querySelectorAll('*[item]');
+        } else {
+          let BDOM1 = DOM.querySelector('button.Btn_Sty_3');
+          let BDOM2 = DOM.querySelector('button.Btn_Sty_2');
+          BDOM1.setAttribute('onclick',`S_ADMIN('${Menu}',${ID},'DEL')`);
+          BDOM2.setAttribute('onclick',`S_ADMIN('${Menu}',${ID},'1')`);
+          ITEMS = DOM.querySelectorAll('*[item]');
+        }
+
+        ITEMS.forEach((Xtem) => {
+          let XK = Xtem.getAttribute('item');
+          let TEXT = (SET[KEYS[ID]]?.[XK])? `${SET[KEYS[ID]][XK]}`:"";
+          if(TEXT != ""){
+            if(Xtem.nodeName == "P"){
+              TEXT = `${XK}: ${TEXT}`; 
+            }
+            Xtem.innerHTML = TEXT;
+          }
+        })
+      }
+      else if(Action == 1){
+        let WHERE = `ID='${SET[KEYS[ID]]['ID']}' AND FECHA='${SET[KEYS[ID]]['FECHA']}'`;
+        let UPDATE = "";
+        if(Menu != "USERS"){ 
+          if(Menu == "CONTROL"){
+            WHERE += ` ADN HORA='${SET[KEYS[ID]]['HORA']}'`;
+            SET[KEYS[ID]]['MOVIMIENTO'] = "DELETE";
+          } else {
+            WHERE += ` AND TEXTO LIKE '${String(SET[KEYS[ID]]['TEXTO']).substring(0,4)}%'`;
+            UPDATE = `RESUELTO='1'`;
+            SET[KEYS[ID]]['RESUELTO'] = "9";
+          }
+        } else {
+          UPDATE = `ULTIMA_VEZ='${TIME['DATE']}'`;
+        }
+        DOM.querySelector(`button[onclick="S_ADMIN('${Menu}',${ID},0)"]`).style.color = "#0a0";
+
+        SEND['SET'] = UPDATE;
+        SEND['WHERE'] = WHERE;
+        if(UPDATE.length > 2){
+          SEND_TO_PHP("SEND_REPORT", SEND);
+        }
+      }
+      else if(Action == 'DEL'){
+        if(confirm("Esta seguro que desea eliminar este elemento?")){
+          let WHERE = `ID='${SET[KEYS[ID]]['ID']}' AND FECHA='${SET[KEYS[ID]]['FECHA']}'`;
+          let UPDATE = "";
+          if(Menu != "USERS"){ 
+            if(Menu == "CONTROL"){
+              WHERE += ` AND HORA='${SET[KEYS[ID]]['HORA']}'`;
+              UPDATE = `MOVIMIENTO='DELETE'`;
+            }else {
+              WHERE += ` AND TEXTO LIKE '${String(SET[KEYS[ID]]['TEXTO']).substring(0,4)}%'`;
+              UPDATE = `RESUELTO='9'`;
+            }
+          } else {
+            UPDATE = `ULTIMA_VEZ='DELETE'`;
+          }
+          DOM.querySelector(`button[onclick="S_ADMIN('${Menu}',${ID},0)"]`).style.color = "#f00";
+          
+
+          SEND['SET'] = UPDATE;
+          SEND['WHERE'] = WHERE;
+          if(UPDATE.length > 2){
+            SEND_TO_PHP("SEND_REPORT", SEND);
+          }
+        }
+      }
+    }
+  }
+
+}
+
+window.addEventListener("DOMContentLoaded", () => {
   GOTO_MENU("Login");
 
   let Config = LOAD_LOCAL();
@@ -1506,4 +1682,4 @@ window.adADMINentListener("DOMContentLoaded", () => {
       WEB_CONFIG['CONEXION']['METHOD'] = "SERVER";
     }, 500);
   }, 1250);
-});
+})

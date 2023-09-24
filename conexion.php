@@ -2,9 +2,9 @@
 //use function PHPSTORM_META\type;
 
 $DEF_HOST = "localhost";
-$DEF_DB = "id21247169_udg_cvehicular";
-$DEF_USER = "id21247169_udg_admin";
-$DEF_PASSWORD = "UDG_Salud_App1";
+$DEF_DB = "udg_cvehicular";
+$DEF_USER = "root";
+$DEF_PASSWORD = "";
 
 $DEF_ADMIN_KEY= "UDGDATABASE";
 
@@ -59,6 +59,7 @@ function Diferenciador($PHP_Function, $DB_DATA, $_DB_CONEXION){
    if($PHP_Function == "GET_HISTORY")  { SELECT_DATA($DB_DATA, $_DB_CONEXION);}
    if($PHP_Function == "VEHICLES_LIST"){ SELECT_DATA($DB_DATA, $_DB_CONEXION);}
    if($PHP_Function == "FORGOTED_USER"){ FORGOTED_USER($DB_DATA, $_DB_CONEXION);}
+   if($PHP_Function == "S_ADMIN"){ S_ADMIN($DB_DATA, $_DB_CONEXION);}
    
    if($PHP_Function == "ACCEPT_USER"){ INSERT_DATA($DB_DATA,$_DB_CONEXION);}
 } 
@@ -279,4 +280,30 @@ function ACEPT_REGISTER($DB_DATA, $_DB_CONEXION)
       echo json_encode(array("RESULT"=>"SUCCESS", $Result)); return "SUCCESS";
    } catch(PDOException $e) { echo json_encode(array("RESULT"=>"ERROR", $e)); return "ERROR";}
    }  
+}
+
+function S_ADMIN($DB_DATA, $_DB_CONEXION)
+{
+   if ($DB_DATA == "ERROR") {
+      echo json_encode(array("RESULT" => "ERROR"));
+      return "ERROR";
+   } else {   
+      try {
+         $SQL = "SELECT " . $DB_DATA['KEYS1'] . " FROM " . $DB_DATA["DB_TABLE1"] . " WHERE " . $DB_DATA["WHERE1"] . " " . $DB_DATA["LIMIT"];
+         $stmt = $_DB_CONEXION->prepare($SQL);
+         $stmt->execute();
+         $Result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+         
+         $SQL = "SELECT " . $DB_DATA['KEYS2'] . " FROM " . $DB_DATA["DB_TABLE2"] . " WHERE " . $DB_DATA["WHERE2"] . " " . $DB_DATA["LIMIT"];
+         $stmt = $_DB_CONEXION->prepare($SQL);
+         $stmt->execute();
+         $Result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+         echo json_encode(array("RESULT" => "SUCCESS", $Result, $Result2));
+         return "SUCCESS";
+      } catch (PDOException $e) {
+         echo json_encode(array("RESULT" => "ERROR", $e));
+         return "ERROR";
+      }
+   }
 }

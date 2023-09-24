@@ -331,7 +331,7 @@
         </div>
         <br />
         <div>
-          <button type="button" class="Btn_Sty_4" onclick="GOTO_MENU('Login')">
+          <button type="button" class="Btn_Sty_4" onclick="GOTO_MENU('Principal')">
             <img src="IMG/Undo.svg" alt="" />
             Volver
           </button>
@@ -509,7 +509,7 @@
             <input
               type="search"
               class="Input_Text"
-              id="History_Search"
+              id="History_Search_V"
               placeholder="BUSCAR"
             />
             <button type="button" class="Btn_Sty_1" onclick="History_List()">
@@ -556,7 +556,11 @@
             <img src="IMG/Undo.svg" alt="" />Volver
           </button>
           <h2 class="Text_Sty_1">Informacion Personal</h2>
-          <div></div>
+          <div>
+            <button type="button" class="Btn_Sty_4 Hiden" id="Mn_SReport_ACC" onclick="S_ADMIN('Report','NO',0)">
+              <img src="IMG/Folder.svg" alt="">
+            </button>
+          </div>
         </div>
         <br />
         <div class="Cn_Box_Sty_1">
@@ -760,7 +764,7 @@
             <img src="IMG/Undo.svg" alt="" />Volver
           </button>
           <h2 class="Text_Sty_1">Control Vehicular</h2>
-          <div></div>
+          <div>          </div>
         </div>
         <br />
         <div class="Cn_Box_Sty_1">
@@ -817,6 +821,9 @@
           </div>
           <br />
           <span>
+            <button type="button" class="Btn_Sty_4" onclick="GOTO_MENU('Registro')">
+            <img src="IMG/Users.svg" alt="">
+            </button>
             <button
               type="button"
               class="Btn_Sty_1"
@@ -862,7 +869,11 @@
             <img src="IMG/Undo.svg" alt="" />Volver
           </button>
           <h2 class="Text_Sty_1">Historial de Entradas y Salidas</h2>
-          <div></div>
+          <div>
+            <button type="button" class="Btn_Sty_4 Hiden" id="Mn_SControl_ACC" onclick="S_ADMIN('Control','NO',0)">
+            <img src="IMG/Folder.svg" alt="">
+            </button>
+          </div>
         </div>
         <br />
         <div class="Cn_Box_Sty_1">
@@ -894,7 +905,7 @@
             <input
               type="search"
               class="Input_Text"
-              id="History_Search"
+              id="History_Search_A"
               placeholder="Buscar"
             />
             <button type="button" class="Btn_Sty_1" onclick="History_List(true)">
@@ -933,7 +944,11 @@
             <img src="IMG/Undo.svg" alt="" />Volver
           </button>
           <h2 class="Text_Sty_1">Base de Datos de Vehiculos</h2>
-          <div></div>
+          <div>
+            <button type="button" class="Btn_Sty_4 Hiden" id="Mn_SUsers_ACC" onclick="S_ADMIN('Users','NO',0)">
+              <img src="IMG/Folder.svg" alt="">
+            </button>
+          </div>
         </div>
         <br />
         <div class="Cn_Box_Sty_1">
@@ -1080,6 +1095,98 @@
           <button class="Hiden"></button>
           <button class="Hiden"></button>
           <button class="Hiden"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="Mn_SReportes Hiden" id="Mn_SReportes">
+      <div class="Cn_SReportes">
+        <h2>Listado de Reportes</h2><br>
+        <div class="Flex">
+            <ul>
+            </ul>
+          <div>
+            <p item="FECHA">FECHA: #</p>
+            <p item="MOTIVO">MOTIVO: #</p>
+            <p item="ID">ID: #</p><br>
+            <textarea item="TEXTO" cols="30" rows="10" readonly></textarea>
+          </div>
+        </div><br>
+        <div class="Flex">
+          <button type="button" class="Btn_Sty_4" onclick="S_ADMIN('Report','',-1)">
+          <img src="IMG/Undo.svg" alt="">
+          VOLVER  
+          </button>
+          <button type="button" class="Btn_Sty_3" onclick="S_ADMIN('Report','',-1)">
+          <img src="IMG/Delete.svg" alt="">
+          ELIMINAR
+          </button>
+          <button type="button" class="Btn_Sty_2" onclick="S_ADMIN('Report','',-1)">
+          <img src="IMG/Document.svg" alt="">
+          SOLUCIONADO
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="Mn_SUsers Hiden" id="Mn_SUsers">
+      <div class="Cn_SUsers">
+        <h2>Usuarios Pendientes</h2><br>
+        <div class="Flex">
+          <ul>
+          </ul>
+        <div>
+          <p></p> 
+          <p item="ID">ID: #</p>
+          <p item="NOMBRE">NOMBRE: #</p>
+          <p item="APELLIDO_1">APELLIDO_1: #</p>
+          <p item="APELLIDO_2">APELLIDO_2: #</p>
+          <p item="FECHA">FECHA: #</p>
+          <p item="TELEFONO">TELEFONO: #</p>
+          <p item="CORREO">CORREO: #</p>
+          <p item="LEVEL">LEVEL: #</p>
+          <p item="VEHICULO">VEHICULO: #</p>
+        </div>
+        </div><br>
+        <div class="Flex">
+          <button type="button" class="Btn_Sty_4" onclick="S_ADMIN('Users','',-1)">
+          <img src="IMG/Undo.svg" alt="">
+          VOLVER  
+          </button>
+          <button type="button" class="Btn_Sty_3" onclick="S_ADMIN('Users','',-1)">
+          <img src="IMG/Delete.svg" alt="">
+          RECHAZAR
+          </button>
+          <button type="button" class="Btn_Sty_2" onclick="S_ADMIN('Users','',-1)">
+          <img src="IMG/Document.svg" alt="">
+          ACEPTAR
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="Mn_SControl Hiden" id="Mn_SControl">
+      <div class="Cn_SControl">
+        <h2>CONTROL DE REGISTROS</h2><br>
+        <div class="Flex">
+          <ul>
+          </ul>
+        <div>
+          <br><br>
+          <p item="FECHA" placeholder="FECHA">FECHA: #</p>
+          <p item="ID" placeholder="ID">ID: #</p>
+          <p item="MOVIMIENTO" placeholder="MOVIMIENTO">MOVIMIENTO: #</p>
+        </div>
+        </div><br>
+        <div class="Flex">
+          <button type="button" class="Btn_Sty_4" onclick="S_ADMIN('CONTROL','',-1)">
+          <img src="IMG/Undo.svg" alt="">
+          VOLVER  
+          </button>
+          <button type="button" class="Btn_Sty_3" onclick="S_ADMIN('CONTROL','',-1)">
+          <img src="IMG/Delete.svg" alt="">
+          ELIMINAR
+          </button>
         </div>
       </div>
     </div>
