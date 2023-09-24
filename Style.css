@@ -88,11 +88,11 @@ input {
   outline: none;
 }
 input[type="radio"] {
-   display: none;
+  display: none;
 }
 textarea {
-   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-   font-weight: 400;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 400;
 }
 
 /* --- Botones */
@@ -226,7 +226,7 @@ button img {
   background-color: #004178;
 }
 .Cn_Banner img {
-    max-height: 80px;
+  max-height: 80px;
 }
 
 /* ####### Alerta #######*/
@@ -479,7 +479,7 @@ button img {
   width: 100%;
 }
 .Sm_Grid h2 {
-   text-align: center;
+  text-align: center;
   width: 100%;
 }
 .Sm_Grid > div {
@@ -505,10 +505,10 @@ button img {
   width: 100%;
 }
 .Cn_Control .Flex > div {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   width: 100%;
 }
@@ -516,23 +516,22 @@ button img {
 .Cn_Hitorial_Student input,
 .Cn_Historial_Admin input,
 .Cn_Info_Admin input {
-   font-size: 1.2rem;
-   padding: 15px;
-   width: calc(100% - 150px);
+  font-size: 1.2rem;
+  padding: 15px;
+  width: calc(100% - 150px);
 }
 .Cn_Control .Cn_Box_Sty_1 > .Input_Div,
 .Cn_Hitorial_Student .Cn_Box_Sty_1 > .Input_Div,
 .Cn_Historial_Admin .Cn_Box_Sty_1 > .Input_Div,
 .Cn_Info_Admin .Cn_Box_Sty_1 > .Input_Div {
-   display: flex;
-   flex-wrap: nowrap;
-   gap: 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
 }
 
 .Cn_Control .Btn_Sty_1 {
   min-width: 160px;
   justify-content: center;
-
 }
 .Cn_Control span {
   display: flex;
@@ -549,7 +548,7 @@ table {
 .Cn_Historial_Admin .td_Title,
 .Cn_Info_Admin .td_Title,
 .Cn_Hitorial_Student .td_Title {
-   font-weight: 600;
+  font-weight: 600;
   background-color: #bababa;
   border: 2px solid #888;
   border-radius: 5px;
@@ -654,20 +653,20 @@ table td {
   flex-direction: column;
 }
 .Cn_Report {
-   display: flex;
-   flex-direction: column;
-   justify-content: flex-start;
-   align-items: center;
-   background-color: #cdcdcd;
-   box-shadow: #888 0 0 10px;
-   border: #888 solid 2px;
-   border-radius: 10px;
-   padding: 20px;
-   margin: auto;
-   width: 80%;
-   max-width: 800px;
-   height: 80%;
-   min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #cdcdcd;
+  box-shadow: #888 0 0 10px;
+  border: #888 solid 2px;
+  border-radius: 10px;
+  padding: 20px;
+  margin: auto;
+  width: 80%;
+  max-width: 800px;
+  height: 80%;
+  min-height: 500px;
 }
 .Cn_Report textarea {
   font-size: 1.2rem;
@@ -677,12 +676,12 @@ table td {
   height: 100%;
 }
 .Cn_Report .Grid {
-   display: flex;
-   gap: 10px;
-   width: 100%;
+  display: flex;
+  gap: 10px;
+  width: 100%;
 }
 .Cn_Report .Grid button {
-   width: 100%;
+  width: 100%;
 }
 
 .Mn_Loading {
@@ -705,14 +704,18 @@ table td {
   animation: LOADING 2s linear infinite;
 }
 
-.Cn_SReportes .Flex, .Cn_SUsers .Flex, .Cn_SControl .Flex {
+.Cn_SReportes .Flex,
+.Cn_SUsers .Flex,
+.Cn_SControl .Flex {
   display: flex;
   gap: 10px;
   justify-content: stretch;
   align-items: flex-start;
 }
 
-.Cn_SReportes, .Cn_SUsers, .Cn_SControl {
+.Cn_SReportes,
+.Cn_SUsers,
+.Cn_SControl {
   background-color: #fafafa;
   border: #888 solid 3px;
   border-radius: 15px;
@@ -723,10 +726,14 @@ table td {
   max-width: 740px;
 }
 
-.Cn_SReportes button, .Cn_SUsers button, .Cn_SControl button {
+.Cn_SReportes button,
+.Cn_SUsers button,
+.Cn_SControl button {
   width: 100%;
 }
-.Cn_SReportes ul, .Cn_SUsers ul, .Cn_SControl ul {
+.Cn_SReportes ul,
+.Cn_SUsers ul,
+.Cn_SControl ul {
   overflow: auto;
   list-style: none;
   padding: 5px;
@@ -734,7 +741,9 @@ table td {
   height: 100%;
   max-height: 400px;
 }
-.Cn_SReportes .li, .Cn_SUsers .li, .Cn_SControl .li {
+.Cn_SReportes .li,
+.Cn_SUsers .li,
+.Cn_SControl .li {
   overflow: hidden;
   font-size: 1rem;
   padding: 10px;
@@ -743,15 +752,18 @@ table td {
     background-color: #ccc;
   }
 }
-.Cn_SReportes p{
+.Cn_SReportes p {
   padding: 3px;
 }
-.Cn_SUsers p, .Cn_SControl p {
+.Cn_SUsers p,
+.Cn_SControl p {
   font-size: 1.2rem;
   padding: 5px;
 }
 
-.Cn_SReportes div, .Cn_SUsers div, .Cn_SControl div {
+.Cn_SReportes div,
+.Cn_SUsers div,
+.Cn_SControl div {
   width: 100%;
 }
 .Cn_SReportes textarea {
@@ -761,7 +773,9 @@ table td {
   height: 320px;
 }
 
-.Mn_SReportes, .Mn_SUsers, .Mn_SControl { 
+.Mn_SReportes,
+.Mn_SUsers,
+.Mn_SControl {
   z-index: 15;
 }
 

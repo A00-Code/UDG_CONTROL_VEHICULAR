@@ -6,7 +6,7 @@ $DEF_DB = "udg_cvehicular";
 $DEF_USER = "root";
 $DEF_PASSWORD = "";
 
-$DEF_ADMIN_KEY= "UDGDATABASE";
+$DEF_ADMIN_KEY = "UDGDATABASE";
 
 if (isset($_FILES['xfile'])) {
    $RAW = $_POST['JSON'];
@@ -27,14 +27,26 @@ if ($DB_JSON == "ERROR") {
    $DB_DATA = json_decode($DB_JSON, true);
 }
 
-if($DEF_HOST != ""){$_DB_HOST = $DEF_HOST;}
-else {$_DB_HOST = $DB_DATA["DB_HOST"];}
-if($DEF_DB != ""){$DB_DB = $DEF_DB;}
-else {$DB_DB = $DB_DATA["DB_NAME"];}
-if($DEF_USER != ""){$_DB_USER = $DEF_USER;}
-else {$_DB_USER = $DB_DATA["DB_USER"];}
-if($DEF_PASSWORD != ""){$_DB_PASSWORD = $DEF_PASSWORD;}
-else {$_DB_PASSWORD = $DB_DATA["DB_PASSWORD"];}
+if ($DEF_HOST != "") {
+   $_DB_HOST = $DEF_HOST;
+} else {
+   $_DB_HOST = $DB_DATA["DB_HOST"];
+}
+if ($DEF_DB != "") {
+   $DB_DB = $DEF_DB;
+} else {
+   $DB_DB = $DB_DATA["DB_NAME"];
+}
+if ($DEF_USER != "") {
+   $_DB_USER = $DEF_USER;
+} else {
+   $_DB_USER = $DB_DATA["DB_USER"];
+}
+if ($DEF_PASSWORD != "") {
+   $_DB_PASSWORD = $DEF_PASSWORD;
+} else {
+   $_DB_PASSWORD = $DB_DATA["DB_PASSWORD"];
+}
 
 try {
    $_DB_CONEXION = new PDO("mysql:host=$_DB_HOST;dbname={$DB_DB}", $_DB_USER, $_DB_PASSWORD);
@@ -47,22 +59,47 @@ try {
 // >>> Identificador de Funciones
 Diferenciador($PHP_Function, $DB_DATA, $_DB_CONEXION);
 
-function Diferenciador($PHP_Function, $DB_DATA, $_DB_CONEXION){
+function Diferenciador($PHP_Function, $DB_DATA, $_DB_CONEXION)
+{
    // Normal-User Functions
-   if($PHP_Function == "USER_LOGIN")   { LOGIN($DB_DATA, $_DB_CONEXION);}
-   if($PHP_Function == "NEW_USER"  )   { INSERT_DATA($DB_DATA, $_DB_CONEXION);}
-   if($PHP_Function == "TRY_ADD_USER") { TRY_ADD_USER($DB_DATA, $_DB_CONEXION);}
-   if($PHP_Function == "NEW_VEHICLE")  { INSERT_DATA($DB_DATA, $_DB_CONEXION);}
-   if($PHP_Function == "NEW_CONTROL")  { INSERT_DATA($DB_DATA, $_DB_CONEXION);}
-   if($PHP_Function == "SEND_REPORT")  { INSERT_DATA($DB_DATA, $_DB_CONEXION);}
-   if($PHP_Function == "GET_USER_DATA"){ SELECT_DATA($DB_DATA, $_DB_CONEXION);}
-   if($PHP_Function == "GET_HISTORY")  { SELECT_DATA($DB_DATA, $_DB_CONEXION);}
-   if($PHP_Function == "VEHICLES_LIST"){ SELECT_DATA($DB_DATA, $_DB_CONEXION);}
-   if($PHP_Function == "FORGOTED_USER"){ FORGOTED_USER($DB_DATA, $_DB_CONEXION);}
-   if($PHP_Function == "S_ADMIN"){ S_ADMIN($DB_DATA, $_DB_CONEXION);}
-   
-   if($PHP_Function == "ACCEPT_USER"){ INSERT_DATA($DB_DATA,$_DB_CONEXION);}
-} 
+   if ($PHP_Function == "USER_LOGIN") {
+      LOGIN($DB_DATA, $_DB_CONEXION);
+   }
+   if ($PHP_Function == "NEW_USER") {
+      INSERT_DATA($DB_DATA, $_DB_CONEXION);
+   }
+   if ($PHP_Function == "TRY_ADD_USER") {
+      TRY_ADD_USER($DB_DATA, $_DB_CONEXION);
+   }
+   if ($PHP_Function == "NEW_VEHICLE") {
+      INSERT_DATA($DB_DATA, $_DB_CONEXION);
+   }
+   if ($PHP_Function == "NEW_CONTROL") {
+      INSERT_DATA($DB_DATA, $_DB_CONEXION);
+   }
+   if ($PHP_Function == "SEND_REPORT") {
+      INSERT_DATA($DB_DATA, $_DB_CONEXION);
+   }
+   if ($PHP_Function == "GET_USER_DATA") {
+      SELECT_DATA($DB_DATA, $_DB_CONEXION);
+   }
+   if ($PHP_Function == "GET_HISTORY") {
+      SELECT_DATA($DB_DATA, $_DB_CONEXION);
+   }
+   if ($PHP_Function == "VEHICLES_LIST") {
+      SELECT_DATA($DB_DATA, $_DB_CONEXION);
+   }
+   if ($PHP_Function == "FORGOTED_USER") {
+      FORGOTED_USER($DB_DATA, $_DB_CONEXION);
+   }
+   if ($PHP_Function == "S_ADMIN") {
+      S_ADMIN($DB_DATA, $_DB_CONEXION);
+   }
+
+   if ($PHP_Function == "ACCEPT_USER") {
+      INSERT_DATA($DB_DATA, $_DB_CONEXION);
+   }
+}
 
 //! ##### FUNCIONES DEV ##### ///
 
@@ -75,7 +112,7 @@ function LOGIN($DB_DATA, $_DB_CONEXION)
       return "ERROR";
    } else {
       $SQL = 'SELECT ' . $DB_DATA['KEYS'] . ' FROM ' . $DB_DATA['DB_TABLE1'] . ' WHERE ' . $DB_DATA["WHERE"] . " LIMIT 1";
-      
+
       $stmt = $_DB_CONEXION->prepare($SQL);
       $stmt->execute();
       $Result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -93,17 +130,17 @@ function LOGIN($DB_DATA, $_DB_CONEXION)
                   $stmt->execute();
                   $Result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                  if(count($Result) > 0){
+                  if (count($Result) > 0) {
                      $Result = $Result[0];
                   } else {
                      $Result = "";
                   }
-                  if(count($Result2) > 0){
+                  if (count($Result2) > 0) {
                      $Result2 = $Result2[0];
                   } else {
                      $Result2 = "";
                   }
-                  
+
                   echo json_encode(array("RESULT" => "SUCCESS", "LOGING" => "TRUE", $Result, $Result2));
                   return "SUCCESS";
                } else {
@@ -132,16 +169,16 @@ function INSERT_DATA($DB_DATA, $_DB_CONEXION)
       echo json_encode(array("RESULT" => "ERROR"));
       return "ERROR";
    } else {
-      $DB_DATA["WHERE"] = (isset($DB_DATA["WHERE"])) ? $DB_DATA["WHERE"]:"";
+      $DB_DATA["WHERE"] = (isset($DB_DATA["WHERE"])) ? $DB_DATA["WHERE"] : "";
       if ($DB_DATA["WHERE"] != "") {
          $SQL = "UPDATE {$DB_DATA["DB_TABLE"]} SET {$DB_DATA["SET"]} WHERE {$DB_DATA["WHERE"]}";
       } else {
          $SQL = "INSERT INTO " . $DB_DATA["DB_TABLE"] . " " . $DB_DATA["KEYS"] . " VALUES (" . $DB_DATA["VALUES"] . ");";
-      } 
-      if(isset($DB_DATA['DEV_KEY'])){
-         if($DB_DATA['DEV_KEY'] != $DEF_ADMIN_KEY){ 
+      }
+      if (isset($DB_DATA['DEV_KEY'])) {
+         if ($DB_DATA['DEV_KEY'] != $DEF_ADMIN_KEY) {
             echo json_encode(array("RESULT" => "ERROR", "CLAVE_INCORRECTA"));
-            return "ERROR"; 
+            return "ERROR";
          }
       }
       try {
@@ -162,12 +199,12 @@ function SELECT_DATA($DB_DATA, $_DB_CONEXION)
       echo json_encode(array("RESULT" => "ERROR"));
       return "ERROR";
    } else {
-      $DB_DATA['ORDER'] = (isset($DB_DATA['ORDER'])) ? $DB_DATA['ORDER']:"";
+      $DB_DATA['ORDER'] = (isset($DB_DATA['ORDER'])) ? $DB_DATA['ORDER'] : "";
 
-      if($DB_DATA['ORDER'] != ""){
-            $SQL = "SELECT * FROM " . $DB_DATA["DB_TABLE"] . " WHERE " . $DB_DATA["WHERE"] . " " . $DB_DATA["ORDER"] . " " . $DB_DATA["LIMIT"];
+      if ($DB_DATA['ORDER'] != "") {
+         $SQL = "SELECT * FROM " . $DB_DATA["DB_TABLE"] . " WHERE " . $DB_DATA["WHERE"] . " " . $DB_DATA["ORDER"] . " " . $DB_DATA["LIMIT"];
       } else {
-        $SQL = "SELECT * FROM " . $DB_DATA["DB_TABLE"] . " WHERE " . $DB_DATA["WHERE"] . " " . $DB_DATA["LIMIT"];
+         $SQL = "SELECT * FROM " . $DB_DATA["DB_TABLE"] . " WHERE " . $DB_DATA["WHERE"] . " " . $DB_DATA["LIMIT"];
       }
 
       $stmt = $_DB_CONEXION->prepare($SQL);
@@ -194,30 +231,30 @@ function TRY_ADD_USER($DB_DATA, $_DB_CONEXION)
       echo json_encode(array("RESULT" => "ERROR"));
       return "ERROR";
    } else {
-      $DB_DATA['ORDER'] = (isset($DB_DATA['ORDER'])) ? $DB_DATA['ORDER']:"";
+      $DB_DATA['ORDER'] = (isset($DB_DATA['ORDER'])) ? $DB_DATA['ORDER'] : "";
 
-      if($DB_DATA['ORDER'] != ""){
-            $SQL = "SELECT * FROM " . $DB_DATA["DB_TABLE"] . " WHERE " . $DB_DATA["WHERE"] . " " . $DB_DATA["ORDER"] . " LIMIT 1";
+      if ($DB_DATA['ORDER'] != "") {
+         $SQL = "SELECT * FROM " . $DB_DATA["DB_TABLE"] . " WHERE " . $DB_DATA["WHERE"] . " " . $DB_DATA["ORDER"] . " LIMIT 1";
       } else {
-        $SQL = "SELECT * FROM " . $DB_DATA["DB_TABLE"] . " WHERE " . $DB_DATA["WHERE"] . " LIMIT 1";
+         $SQL = "SELECT * FROM " . $DB_DATA["DB_TABLE"] . " WHERE " . $DB_DATA["WHERE"] . " LIMIT 1";
       }
 
       $stmt = $_DB_CONEXION->prepare($SQL);
       $stmt->execute();
       try {
-      $Result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-      if (count($Result) == 0) {
+         $Result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+         if (count($Result) == 0) {
 
-         $SQL = "INSERT INTO {$DB_DATA['DB_TABLE']} {$DB_DATA['KEYS']} VALUES ({$DB_DATA['VALUES']})";
-         $stmt = $_DB_CONEXION->prepare($SQL);
-         $stmt->execute();
+            $SQL = "INSERT INTO {$DB_DATA['DB_TABLE']} {$DB_DATA['KEYS']} VALUES ({$DB_DATA['VALUES']})";
+            $stmt = $_DB_CONEXION->prepare($SQL);
+            $stmt->execute();
 
-         echo json_encode(array("RESULT" => "SUCCESS"));
-         return "SUCCESS";
-      } else {
-         echo json_encode(array("RESULT" => "SUCCESS"));
-         return "SUCCESS";
-      }
+            echo json_encode(array("RESULT" => "SUCCESS"));
+            return "SUCCESS";
+         } else {
+            echo json_encode(array("RESULT" => "SUCCESS"));
+            return "SUCCESS";
+         }
       } catch (PDOException $e) {
          echo json_encode(array("RESULT" => "ERROR", $e));
          return "ERROR";
@@ -227,19 +264,21 @@ function TRY_ADD_USER($DB_DATA, $_DB_CONEXION)
 
 function FORGOTED_USER($DB_DATA, $_DB_CONEXION)
 {
-   echo json_encode(array("RESULT"=>"SUCCES"));
+   echo json_encode(array("RESULT" => "SUCCES"));
 }
 
 function ACEPT_REGISTER($DB_DATA, $_DB_CONEXION)
 {
-   if ($DB_DATA == "ERROR"){ echo json_encode(array("RESULT"=>"ERROR")); return "ERROR";}
-   else { 
+   if ($DB_DATA == "ERROR") {
+      echo json_encode(array("RESULT" => "ERROR"));
+      return "ERROR";
+   } else {
       $SQL = "SELECT * FROM registros WHERE ID = " . $DB_DATA['VALUES'] . ";";
       $stmt = $_DB_CONEXION->prepare($SQL);
       $stmt->execute();
-      try{
+      try {
          $Result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-         if(count($Result) > 0){
+         if (count($Result) > 0) {
             $SQL = "INSERT INTO users(ID,USER_PASSWORD,CORREO) VALUES (:0, :1, :2);";
             $stmt = $_DB_CONEXION->prepare($SQL);
             $stmt->bindParam(":0", $Result[0]["ID"]);
@@ -275,11 +314,14 @@ function ACEPT_REGISTER($DB_DATA, $_DB_CONEXION)
             $SQL = "DELETE FROM registros WHERE ID = " . $Result[0]["ID"] . ";";
             $stmt = $_DB_CONEXION->prepare($SQL);
             $stmt->execute();
-
-      }   
-      echo json_encode(array("RESULT"=>"SUCCESS", $Result)); return "SUCCESS";
-   } catch(PDOException $e) { echo json_encode(array("RESULT"=>"ERROR", $e)); return "ERROR";}
-   }  
+         }
+         echo json_encode(array("RESULT" => "SUCCESS", $Result));
+         return "SUCCESS";
+      } catch (PDOException $e) {
+         echo json_encode(array("RESULT" => "ERROR", $e));
+         return "ERROR";
+      }
+   }
 }
 
 function S_ADMIN($DB_DATA, $_DB_CONEXION)
@@ -287,13 +329,13 @@ function S_ADMIN($DB_DATA, $_DB_CONEXION)
    if ($DB_DATA == "ERROR") {
       echo json_encode(array("RESULT" => "ERROR"));
       return "ERROR";
-   } else {   
+   } else {
       try {
          $SQL = "SELECT " . $DB_DATA['KEYS1'] . " FROM " . $DB_DATA["DB_TABLE1"] . " WHERE " . $DB_DATA["WHERE1"] . " " . $DB_DATA["LIMIT"];
          $stmt = $_DB_CONEXION->prepare($SQL);
          $stmt->execute();
          $Result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-         
+
          $SQL = "SELECT " . $DB_DATA['KEYS2'] . " FROM " . $DB_DATA["DB_TABLE2"] . " WHERE " . $DB_DATA["WHERE2"] . " " . $DB_DATA["LIMIT"];
          $stmt = $_DB_CONEXION->prepare($SQL);
          $stmt->execute();

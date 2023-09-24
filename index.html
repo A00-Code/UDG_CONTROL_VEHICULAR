@@ -30,48 +30,25 @@
       <br /><br />
       <form class="Cn_Login">
         <img src="IMG/Cutlajo_Logo.png" alt="" />
-        <input
-          type="text"
-          class="Input_Text"
-          id="LOGIN_USER"
-          placeholder="Codigo de Usuario"
-        />
-        <input
-          type="text"
-          class="Input_Text"
-          id="LOGIN_PASSWORD"
-          placeholder="Contraseña"
-        />
+        <input type="text" class="Input_Text" id="LOGIN_USER" placeholder="Codigo de Usuario" />
+        <input type="text" class="Input_Text" id="LOGIN_PASSWORD" placeholder="Contraseña" />
         <button type="button" class="Btn_Sty_1" onclick="User_Login()">
           <img src="IMG/cursor.svg" alt="" />
           Continuar
         </button>
-        <button
-          type="button"
-          class="Btn_Sty_0 Tooltip"
-          onclick="GOTO_MENU('Recuperar')"
-        >
+        <button type="button" class="Btn_Sty_0 Tooltip" onclick="GOTO_MENU('Recuperar')">
           <img src="IMG/Key.svg" alt="" />
           Olvidaste tu Contraseña?
         </button>
         <hr />
-        <button
-          type="button"
-          class="Btn_Sty_2 Tooltip"
-          onclick="GOTO_MENU('Registro')"
-        >
+        <button type="button" class="Btn_Sty_2 Tooltip" onclick="GOTO_MENU('Registro')">
           <img src="IMG/Users.svg" alt="" />
           Crear Cuenta
         </button>
       </form>
       <br />
       <div class="" style="margin: 0 auto">
-        <button
-          type="button"
-          class="Btn_Sty_4"
-          onclick="User_Login('LOCAL')"
-          style="width: 320px; justify-content: center"
-        >
+        <button type="button" class="Btn_Sty_4" onclick="User_Login('LOCAL')" style="width: 320px; justify-content: center">
           <img src="IMG/Computer.svg" alt="" />
           LOCAL
         </button>
@@ -99,50 +76,25 @@
           <br />
           <div class="Grid">
             <div class="Input_Div">
-              <input
-                type="radio"
-                name="User_Level"
-                id="User_Level1"
-                value="Visit"
-              />
+              <input type="radio" name="User_Level" id="User_Level1" value="Visit" />
               <label for="User_Level1">Visitante</label>
             </div>
             <div class="Input_Div">
-              <input
-                type="radio"
-                name="User_Level"
-                id="User_Level2"
-                value="Student"
-              />
+              <input type="radio" name="User_Level" id="User_Level2" value="Student" />
               <label for="User_Level2">Estudiante</label>
             </div>
             <div class="Input_Div">
-              <input
-                type="radio"
-                name="User_Level"
-                id="User_Level3"
-                value="Docent"
-              />
+              <input type="radio" name="User_Level" id="User_Level3" value="Docent" />
               <label for="User_Level3">Docente</label>
             </div>
             <div class="Input_Div">
-              <input
-                type="radio"
-                name="User_Level"
-                id="User_Level4"
-                value="Admin"
-              />
+              <input type="radio" name="User_Level" id="User_Level4" value="Admin" />
               <label for="User_Level4">Administrativo</label>
             </div>
           </div>
           <br />
           <div class="Input_Div">
-            <input
-              type="text"
-              class="Input_Text"
-              placeholder="Codigo de identificacion UDG"
-              id="R_Code"
-            />
+            <input type="text" class="Input_Text" placeholder="Codigo de identificacion UDG" id="R_Code" />
           </div>
           <br />
         </div>
@@ -161,61 +113,31 @@
             </button>
           </h3>
           <span>
-            <input type="file" name="R_IMG1" id="R_IMG1" style="display: none;">
+            <input type="file" name="R_IMG1" id="R_IMG1" style="display: none" />
             <label for="R_IMG1" class="Btn_Sty_4">
-              <img src="IMG/Picture_Face.svg" alt="">
+              <img src="IMG/Picture_Face.svg" alt="" />
               SELECCIONAR IMAGEN
             </label>
           </span>
           <br />
           <div class="Grid">
             <div class="Input_Div">
-              <input
-                type="text"
-                class="Input_Text"
-                id="User_Name"
-                placeholder="Nombre Completo"
-              />
+              <input type="text" class="Input_Text" id="User_Name" placeholder="Nombre Completo" />
             </div>
             <div class="Input_Div">
-              <input
-                type="date"
-                class="Input_Text"
-                id="User_Date"
-                placeholder="Fecha de Nacimiento"
-              />
+              <input type="date" class="Input_Text" id="User_Date" placeholder="Fecha de Nacimiento" />
             </div>
             <div class="Input_Div">
-              <input
-                type="text"
-                class="Input_Text"
-                id="Email"
-                placeholder="Correo Electronico"
-              />
+              <input type="text" class="Input_Text" id="Email" placeholder="Correo Electronico" />
             </div>
             <div class="Input_Div">
-              <input
-                type="text"
-                class="Input_Text"
-                id="Tel"
-                placeholder="Telefono Cel"
-              />
+              <input type="text" class="Input_Text" id="Tel" placeholder="Telefono Cel" />
             </div>
             <div class="Input_Div">
-              <input
-                type="password"
-                class="Input_Text"
-                id="User_Password"
-                placeholder="Contraseña"
-              />
+              <input type="password" class="Input_Text" id="User_Password" placeholder="Contraseña" />
             </div>
             <div class="Input_Div">
-              <input
-                type="password"
-                class="Input_Text"
-                id="User_Password_2"
-                placeholder="Comfirmar Contraseña"
-              />
+              <input type="password" class="Input_Text" id="User_Password_2" placeholder="Comfirmar Contraseña" />
             </div>
           </div>
           <br />
@@ -232,18 +154,15 @@
               <div class="Mn_Tip">
                 <div class="Cn_Tip">
                   <p class="">Datos del Vehiculo a Registrar.</p>
-                  <p class="">
-                    (Solo 1 Vehiculo por cuenta permitido, en caso de utilizar
-                    mas de 1 informarlo en oficinas)
-                  </p>
+                  <p class="">(Solo 1 Vehiculo por cuenta permitido, en caso de utilizar mas de 1 informarlo en oficinas)</p>
                 </div>
               </div>
             </button>
           </h3>
           <span>
-            <input type="file" name="R_IMG2" id="R_IMG2" style="display: none;">
+            <input type="file" name="R_IMG2" id="R_IMG2" style="display: none" />
             <label for="R_IMG2" class="Btn_Sty_4">
-              <img src="IMG/Car_Info.svg" alt="">
+              <img src="IMG/Car_Info.svg" alt="" />
               SELECCIONAR IMAGEN
             </label>
           </span>
@@ -254,21 +173,11 @@
               <label for="V_Type_1">Moto</label>
             </div>
             <div class="Input_Div">
-              <input
-                type="radio"
-                name="V_Type"
-                id="V_Type_2"
-                value="Automovil"
-              />
+              <input type="radio" name="V_Type" id="V_Type_2" value="Automovil" />
               <label for="V_Type_2">Automovil</label>
             </div>
             <div class="Input_Div">
-              <input
-                type="radio"
-                name="V_Type"
-                id="V_Type_3"
-                value="Camioneta"
-              />
+              <input type="radio" name="V_Type" id="V_Type_3" value="Camioneta" />
               <label for="V_Type_3">Camioneta</label>
             </div>
             <div class="Input_Div">
@@ -279,52 +188,22 @@
           <br />
           <div class="Grid">
             <div class="Input_Div">
-              <input
-                type="text"
-                class="Input_Text"
-                id="V_Mark"
-                placeholder="Marca"
-              />
+              <input type="text" class="Input_Text" id="V_Mark" placeholder="Marca" />
             </div>
             <div class="Input_Div">
-              <input
-                type="text"
-                class="Input_Text"
-                id="V_Model"
-                placeholder="Modelo"
-              />
+              <input type="text" class="Input_Text" id="V_Model" placeholder="Modelo" />
             </div>
             <div class="Input_Div">
-              <input
-                type="text"
-                class="Input_Text"
-                id="V_Year"
-                placeholder="Año"
-              />
+              <input type="text" class="Input_Text" id="V_Year" placeholder="Año" />
             </div>
             <div class="Input_Div">
-              <input
-                type="text"
-                class="Input_Text"
-                id="V_Color"
-                placeholder="Color"
-              />
+              <input type="text" class="Input_Text" id="V_Color" placeholder="Color" />
             </div>
             <div class="Input_Div">
-              <input
-                type="text"
-                class="Input_Text"
-                id="V_Plate"
-                placeholder="Placa"
-              />
+              <input type="text" class="Input_Text" id="V_Plate" placeholder="Placa" />
             </div>
             <div class="Input_Div">
-              <input
-                type="text"
-                class="Input_Text"
-                id="V_Detail"
-                placeholder="Detalles"
-              />
+              <input type="text" class="Input_Text" id="V_Detail" placeholder="Detalles" />
             </div>
           </div>
           <br />
@@ -350,25 +229,11 @@
         <div class="Cn_Box_Sty_1">
           <h1 class="">RECUPERAR CUENTA</h1>
           <h3 class="">Informacion de recuperacion</h3>
-          <input
-            type="text"
-            id="Forget_Email"
-            class="Input_Text"
-            placeholder="Codigo de Usuario"
-          />
+          <input type="text" id="Forget_Email" class="Input_Text" placeholder="Codigo de Usuario" />
           <p>- O -</p>
-          <input
-            type="text"
-            id="Forget_Email2"
-            class="Input_Text"
-            placeholder="Correo Electronico"
-          />
+          <input type="text" id="Forget_Email2" class="Input_Text" placeholder="Correo Electronico" />
           <div>
-            <button
-              type="button"
-              class="Btn_Sty_4"
-              onclick="GOTO_MENU('Login')"
-            >
+            <button type="button" class="Btn_Sty_4" onclick="GOTO_MENU('Login')">
               <img src="IMG/Undo.svg" alt="" />
               Volver
             </button>
@@ -384,7 +249,7 @@
     <!-- [ Visitante > Principal ] -->
     <div class="Mn_Principal_Student Hiden" id="Mn_Principal_Student">
       <div class="Cn_Principal_Student">
-         <br />
+        <br />
         <div class="Cn_Box_Sty_1">
           <h2 class="Text_Sty_2">Sistema de Cotrol Vehicular</h2>
         </div>
@@ -394,17 +259,9 @@
           <img src="IMG/History.svg" alt="" />
           <div>
             <h4 class="Text_Sty_1">Historial de Visitas</h4>
-            <p>
-              Ver mi historial de Entradas y Salidas del campo universitario
-            </p>
+            <p>Ver mi historial de Entradas y Salidas del campo universitario</p>
             <br />
-            <button
-              type="button"
-              class="Btn_Sty_1"
-              onclick="GOTO_MENU('History')"
-            >
-              Ver Historial
-            </button>
+            <button type="button" class="Btn_Sty_1" onclick="GOTO_MENU('History')">Ver Historial</button>
           </div>
           <br />
         </div>
@@ -413,14 +270,9 @@
           <img src="IMG/Info.svg" alt="" />
           <div>
             <h4 class="Text_Sty_1">Inofrmacion Personal</h4>
-            <p>
-              Obtener la ficha con toda la informacion Personal y del vehiculo
-              registrado
-            </p>
+            <p>Obtener la ficha con toda la informacion Personal y del vehiculo registrado</p>
             <br />
-            <button type="button" class="Btn_Sty_1" onclick="Info_Menu(null)">
-              Consultar Informacion
-            </button>
+            <button type="button" class="Btn_Sty_1" onclick="Info_Menu(null)">Consultar Informacion</button>
           </div>
           <br />
         </div>
@@ -429,18 +281,9 @@
           <img src="IMG/Document.svg" alt="" />
           <div>
             <h4 class="Text_Sty_1">Generar un Reporte</h4>
-            <p>
-              Generar y enviar un reporte acerca de alguna anomalia en el
-              vehiculo durante la estancia en el centro universitario
-            </p>
+            <p>Generar y enviar un reporte acerca de alguna anomalia en el vehiculo durante la estancia en el centro universitario</p>
             <br />
-            <button
-              type="button"
-              class="Btn_Sty_1"
-              onclick="GOTO_MENU('Report')"
-            >
-              Reportar
-            </button>
+            <button type="button" class="Btn_Sty_1" onclick="GOTO_MENU('Report')">Reportar</button>
           </div>
           <br />
         </div>
@@ -448,9 +291,7 @@
         <hr />
         <br />
         <div class="Cn_Box_Sty_1">
-          <button type="button" class="Btn_Sty_3" onclick="GOTO_MENU('Login')">
-            Cerrar Sesion
-          </button>
+          <button type="button" class="Btn_Sty_3" onclick="GOTO_MENU('Login')">Cerrar Sesion</button>
         </div>
       </div>
     </div>
@@ -460,13 +301,7 @@
       <div class="Cn_Hitorial_Student">
         <br />
         <div class="Sm_Grid">
-          <button
-            type="button"
-            class="Btn_Sty_1"
-            onclick="GOTO_MENU('Principal')"
-          >
-            <img src="IMG/Undo.svg" alt="" />Volver
-          </button>
+          <button type="button" class="Btn_Sty_1" onclick="GOTO_MENU('Principal')"><img src="IMG/Undo.svg" alt="" />Volver</button>
           <h2 class="Text_Sty_1">Historial de Entradas y Salidas</h2>
           <div></div>
         </div>
@@ -475,46 +310,23 @@
           <br />
           <div class="Grid">
             <div class="Input_Div">
-              <input
-                type="radio"
-                name="History_Search_Visit"
-                id="Filter_1b"
-                class=""
-              />
+              <input type="radio" name="History_Search_Visit" id="Filter_1b" class="" />
               <label for="Filter_1b">Fecha</label>
             </div>
             <div class="Input_Div">
-              <input
-                type="radio"
-                name="History_Search_Visit"
-                id="Filter_2b"
-                class=""
-                checked="True"
-              />
+              <input type="radio" name="History_Search_Visit" id="Filter_2b" class="" checked="True" />
               <label for="Filter_2b">Hora</label>
             </div>
             <div class="Input_Div">
-              <input
-                type="radio"
-                name="History_Search_Visit"
-                id="Filter_3b"
-                class=""
-              />
+              <input type="radio" name="History_Search_Visit" id="Filter_3b" class="" />
               <label for="Filter_3b">Movimiento</label>
             </div>
           </div>
           <br />
           <hr />
           <div class="Input_Div">
-            <input
-              type="search"
-              class="Input_Text"
-              id="History_Search_V"
-              placeholder="BUSCAR"
-            />
-            <button type="button" class="Btn_Sty_1" onclick="History_List()">
-              Buscar
-            </button>
+            <input type="search" class="Input_Text" id="History_Search_V" placeholder="BUSCAR" />
+            <button type="button" class="Btn_Sty_1" onclick="History_List()">Buscar</button>
           </div>
         </div>
         <hr />
@@ -548,17 +360,11 @@
       <div class="Cn_Info_Student">
         <br />
         <div class="Sm_Grid">
-          <button
-            type="button"
-            class="Btn_Sty_1"
-            onclick="GOTO_MENU('Principal')"
-          >
-            <img src="IMG/Undo.svg" alt="" />Volver
-          </button>
+          <button type="button" class="Btn_Sty_1" onclick="GOTO_MENU('Principal')"><img src="IMG/Undo.svg" alt="" />Volver</button>
           <h2 class="Text_Sty_1">Informacion Personal</h2>
           <div>
             <button type="button" class="Btn_Sty_4 Hiden" id="Mn_SReport_ACC" onclick="S_ADMIN('Report','NO',0)">
-              <img src="IMG/Folder.svg" alt="">
+              <img src="IMG/Folder.svg" alt="" />
             </button>
           </div>
         </div>
@@ -645,11 +451,7 @@
               <img src="IMG/Document.svg" alt="" />
               Solicitar Correccion
             </button>
-            <button
-              type="button"
-              class="Btn_Sty_3"
-              onclick="GOTO_MENU('Report')"
-            >
+            <button type="button" class="Btn_Sty_3" onclick="GOTO_MENU('Report')">
               <img src="IMG/Document.svg" alt="" />
               Reportar Error
             </button>
@@ -676,13 +478,7 @@
             <h4 class="Text_Sty_1">Control de Registro Vehicular</h4>
             <p>Registrar Nuevas Entradas y Salidas de Vehiculos</p>
             <br />
-            <button
-              type="button"
-              class="Btn_Sty_1"
-              onclick="GOTO_MENU('Control')"
-            >
-              Control Vehicular
-            </button>
+            <button type="button" class="Btn_Sty_1" onclick="GOTO_MENU('Control')">Control Vehicular</button>
             <br />
           </div>
         </div>
@@ -691,18 +487,9 @@
           <img src="IMG/History.svg" alt="" />
           <div>
             <h4 class="Text_Sty_1">Historial de Registros</h4>
-            <p>
-              Historial de Entradas y Salidas de Visitas, Estudiantes, Maestros
-              y Personal
-            </p>
+            <p>Historial de Entradas y Salidas de Visitas, Estudiantes, Maestros y Personal</p>
             <br />
-            <button
-              type="button"
-              class="Btn_Sty_1"
-              onclick="GOTO_MENU('History')"
-            >
-              Historial de Registros
-            </button>
+            <button type="button" class="Btn_Sty_1" onclick="GOTO_MENU('History')">Historial de Registros</button>
             <br />
           </div>
         </div>
@@ -713,13 +500,7 @@
             <h4 class="Text_Sty_1">Consultar Informacion Vehicular</h4>
             <p>Obten la informacion basica del dueño del vehiculo</p>
             <br />
-            <button
-              type="button"
-              class="Btn_Sty_1"
-              onclick="GOTO_MENU('Info_Adm')"
-            >
-              Consultar Informacion
-            </button>
+            <button type="button" class="Btn_Sty_1" onclick="GOTO_MENU('Info_Adm')">Consultar Informacion</button>
             <br />
           </div>
         </div>
@@ -730,22 +511,15 @@
           <img src="IMG/Info.svg" alt="" />
           <div>
             <h4 class="Text_Sty_1">Informacion de la Cuenta</h4>
-            <p>
-              Obtener la ficha con toda la informacion propia de la cuenta
-              registrado
-            </p>
+            <p>Obtener la ficha con toda la informacion propia de la cuenta registrado</p>
             <br />
-            <button type="button" class="Btn_Sty_1" onclick="Info_Menu(null)">
-              Consultar Informacion
-            </button>
+            <button type="button" class="Btn_Sty_1" onclick="Info_Menu(null)">Consultar Informacion</button>
             <br />
           </div>
         </div>
         <br />
         <div class="Cn_Box_Sty_1">
-          <button type="button" class="Btn_Sty_3" onclick="End_Sesion()">
-            Cerrar Sesion
-          </button>
+          <button type="button" class="Btn_Sty_3" onclick="End_Sesion()">Cerrar Sesion</button>
         </div>
         <br /><br />
       </div>
@@ -756,15 +530,9 @@
       <div class="Cn_Control">
         <br />
         <div class="Sm_Grid">
-          <button
-            type="button"
-            class="Btn_Sty_1"
-            onclick="GOTO_MENU('Principal')"
-          >
-            <img src="IMG/Undo.svg" alt="" />Volver
-          </button>
+          <button type="button" class="Btn_Sty_1" onclick="GOTO_MENU('Principal')"><img src="IMG/Undo.svg" alt="" />Volver</button>
           <h2 class="Text_Sty_1">Control Vehicular</h2>
-          <div>          </div>
+          <div></div>
         </div>
         <br />
         <div class="Cn_Box_Sty_1">
@@ -781,22 +549,11 @@
               <h3>Tipo de Movimiento:</h3>
               <div class="Flex">
                 <div class="Input_Div">
-                  <input
-                    type="radio"
-                    name="Control"
-                    id="Control_1"
-                    value="ENTRADA"
-                    checked
-                  />
+                  <input type="radio" name="Control" id="Control_1" value="ENTRADA" checked />
                   <label for="Control_1">Entrada</label>
                 </div>
                 <div class="Input_Div">
-                  <input
-                    type="radio"
-                    name="Control"
-                    id="Control_2"
-                    value="SALIDA"
-                  />
+                  <input type="radio" name="Control" id="Control_2" value="SALIDA" />
                   <label for="Control_2">Salida</label>
                 </div>
               </div>
@@ -804,17 +561,8 @@
           </div>
           <br />
           <div class="Input_Div">
-            <input
-              type="text"
-              class="Input_Text"
-              id="Control_Plates"
-              placeholder="Placas"
-            />
-            <button
-              type="button"
-              class="Btn_Sty_1"
-              onclick="Add_Control_Register()"
-            >
+            <input type="text" class="Input_Text" id="Control_Plates" placeholder="Placas" />
+            <button type="button" class="Btn_Sty_1" onclick="Add_Control_Register()">
               <img src="IMG/Add.svg" alt="" />
               Registrar
             </button>
@@ -822,21 +570,13 @@
           <br />
           <span>
             <button type="button" class="Btn_Sty_4" onclick="GOTO_MENU('Registro')">
-            <img src="IMG/Users.svg" alt="">
+              <img src="IMG/Users.svg" alt="" />
             </button>
-            <button
-              type="button"
-              class="Btn_Sty_1"
-              onclick="GOTO_MENU('History')"
-            >
+            <button type="button" class="Btn_Sty_1" onclick="GOTO_MENU('History')">
               <img src="IMG/History.svg" alt="" />
               Ver Hitorial de Registros
             </button>
-            <button
-              type="button"
-              class="Btn_Sty_1"
-              onclick="Update_Last_Control()"
-            >
+            <button type="button" class="Btn_Sty_1" onclick="Update_Last_Control()">
               <img src="IMG/Edit.svg" alt="" />
               Corregir Ultimo Registro
             </button>
@@ -861,17 +601,11 @@
       <div class="Cn_Historial_Admin">
         <br />
         <div class="Sm_Grid">
-          <button
-            type="button"
-            class="Btn_Sty_1"
-            onclick="GOTO_MENU('Principal')"
-          >
-            <img src="IMG/Undo.svg" alt="" />Volver
-          </button>
+          <button type="button" class="Btn_Sty_1" onclick="GOTO_MENU('Principal')"><img src="IMG/Undo.svg" alt="" />Volver</button>
           <h2 class="Text_Sty_1">Historial de Entradas y Salidas</h2>
           <div>
             <button type="button" class="Btn_Sty_4 Hiden" id="Mn_SControl_ACC" onclick="S_ADMIN('Control','NO',0)">
-            <img src="IMG/Folder.svg" alt="">
+              <img src="IMG/Folder.svg" alt="" />
             </button>
           </div>
         </div>
@@ -880,34 +614,18 @@
           <h3 class="Text_Sty_1">Filtro de Busqueda</h3>
           <div class="Grid">
             <div class="Input_Div">
-              <input
-                type="radio"
-                name="History_Search_Admin"
-                id="Filter_1"
-                class=""
-              />
+              <input type="radio" name="History_Search_Admin" id="Filter_1" class="" />
               <label for="Filter_1">Fecha</label>
             </div>
             <div class="Input_Div">
-              <input
-                type="radio"
-                name="History_Search_Admin"
-                id="Filter_2"
-                class=""
-                checked="True"
-              />
+              <input type="radio" name="History_Search_Admin" id="Filter_2" class="" checked="True" />
               <label for="Filter_2">Placa</label>
             </div>
           </div>
           <br />
           <hr />
           <div class="Input_Div">
-            <input
-              type="search"
-              class="Input_Text"
-              id="History_Search_A"
-              placeholder="Buscar"
-            />
+            <input type="search" class="Input_Text" id="History_Search_A" placeholder="Buscar" />
             <button type="button" class="Btn_Sty_1" onclick="History_List(true)">
               <img src="IMG/Search.svg" alt="" />
               Buscar
@@ -936,17 +654,11 @@
       <div class="Cn_Info_Admin">
         <br />
         <div class="Sm_Grid">
-          <button
-            type="button"
-            class="Btn_Sty_1"
-            onclick="GOTO_MENU('Principal')"
-          >
-            <img src="IMG/Undo.svg" alt="" />Volver
-          </button>
+          <button type="button" class="Btn_Sty_1" onclick="GOTO_MENU('Principal')"><img src="IMG/Undo.svg" alt="" />Volver</button>
           <h2 class="Text_Sty_1">Base de Datos de Vehiculos</h2>
           <div>
             <button type="button" class="Btn_Sty_4 Hiden" id="Mn_SUsers_ACC" onclick="S_ADMIN('Users','NO',0)">
-              <img src="IMG/Folder.svg" alt="">
+              <img src="IMG/Folder.svg" alt="" />
             </button>
           </div>
         </div>
@@ -955,69 +667,33 @@
           <h3 class="Text_Sty_1">Filtro de Busqueda</h3>
           <div class="Grid">
             <div class="Input_Div">
-              <input
-                type="radio"
-                name="Info_Search_Admin"
-                id="Info_Filter_5"
-                class=""
-              />
+              <input type="radio" name="Info_Search_Admin" id="Info_Filter_5" class="" />
               <label for="Info_Filter_5">Dueño</label>
             </div>
             <div class="Input_Div">
-              <input
-                type="radio"
-                name="Info_Search_Admin"
-                id="Info_Filter_1"
-                class=""
-                checked="True"
-              />
+              <input type="radio" name="Info_Search_Admin" id="Info_Filter_1" class="" checked="True" />
               <label for="Info_Filter_1">Placa</label>
             </div>
             <div class="Input_Div">
-              <input
-                type="radio"
-                name="Info_Search_Admin"
-                id="Info_Filter_2"
-                class=""
-              />
+              <input type="radio" name="Info_Search_Admin" id="Info_Filter_2" class="" />
               <label for="Info_Filter_2">Tipo</label>
             </div>
             <div class="Input_Div">
-              <input
-                type="radio"
-                name="Info_Search_Admin"
-                id="Info_Filter_3"
-                class=""
-              />
+              <input type="radio" name="Info_Search_Admin" id="Info_Filter_3" class="" />
               <label for="Info_Filter_3">Marca</label>
             </div>
             <div class="Input_Div">
-              <input
-                type="radio"
-                name="Info_Search_Admin"
-                id="Info_Filter_6"
-                class=""
-              />
+              <input type="radio" name="Info_Search_Admin" id="Info_Filter_6" class="" />
               <label for="Info_Filter_6">Modelo</label>
             </div>
             <div class="Input_Div">
-              <input
-                type="radio"
-                name="Info_Search_Admin"
-                id="Info_Filter_4"
-                class=""
-              />
+              <input type="radio" name="Info_Search_Admin" id="Info_Filter_4" class="" />
               <label for="Info_Filter_4">Color</label>
             </div>
           </div>
           <br />
           <div class="Input_Div">
-            <input
-              type="text"
-              class="Input_Text"
-              id="Vehicle_Search"
-              placeholder="Buscar"
-            />
+            <input type="text" class="Input_Text" id="Vehicle_Search" placeholder="Buscar" />
             <button type="button" class="Btn_Sty_1" onclick="Vehicle_List()">
               <img src="IMG/Search.svg" alt="" />
               Buscar
@@ -1052,19 +728,12 @@
     <div class="Mn_Report Hiden" id="Mn_Report">
       <div class="Cn_Report">
         <h2 class="Text_Sty_1 Center">Reporte General</h2>
-        <p>
-          A continuacion describa el motivo del reporte y seleccione a que
-          categoria desea enviarlo.
-        </p>
+        <p>A continuacion describa el motivo del reporte y seleccione a que categoria desea enviarlo.</p>
         <br />
         <textarea name="" id="" cols="30" rows="10"></textarea>
         <br />
         <div class="Grid">
-          <button
-            type="button"
-            class="Btn_Sty_4"
-            onclick="GOTO_MENU('Principal')"
-          >
+          <button type="button" class="Btn_Sty_4" onclick="GOTO_MENU('Principal')">
             <img src="IMG/Undo.svg" alt="" />
             Volver
           </button>
@@ -1101,29 +770,31 @@
 
     <div class="Mn_SReportes Hiden" id="Mn_SReportes">
       <div class="Cn_SReportes">
-        <h2>Listado de Reportes</h2><br>
+        <h2>Listado de Reportes</h2>
+        <br />
         <div class="Flex">
-            <ul>
-            </ul>
+          <ul></ul>
           <div>
             <p item="FECHA">FECHA: #</p>
             <p item="MOTIVO">MOTIVO: #</p>
-            <p item="ID">ID: #</p><br>
+            <p item="ID">ID: #</p>
+            <br />
             <textarea item="TEXTO" cols="30" rows="10" readonly></textarea>
           </div>
-        </div><br>
+        </div>
+        <br />
         <div class="Flex">
           <button type="button" class="Btn_Sty_4" onclick="S_ADMIN('Report','',-1)">
-          <img src="IMG/Undo.svg" alt="">
-          VOLVER  
+            <img src="IMG/Undo.svg" alt="" />
+            VOLVER
           </button>
           <button type="button" class="Btn_Sty_3" onclick="S_ADMIN('Report','',-1)">
-          <img src="IMG/Delete.svg" alt="">
-          ELIMINAR
+            <img src="IMG/Delete.svg" alt="" />
+            ELIMINAR
           </button>
           <button type="button" class="Btn_Sty_2" onclick="S_ADMIN('Report','',-1)">
-          <img src="IMG/Document.svg" alt="">
-          SOLUCIONADO
+            <img src="IMG/Document.svg" alt="" />
+            SOLUCIONADO
           </button>
         </div>
       </div>
@@ -1131,35 +802,36 @@
 
     <div class="Mn_SUsers Hiden" id="Mn_SUsers">
       <div class="Cn_SUsers">
-        <h2>Usuarios Pendientes</h2><br>
+        <h2>Usuarios Pendientes</h2>
+        <br />
         <div class="Flex">
-          <ul>
-          </ul>
-        <div>
-          <p></p> 
-          <p item="ID">ID: #</p>
-          <p item="NOMBRE">NOMBRE: #</p>
-          <p item="APELLIDO_1">APELLIDO_1: #</p>
-          <p item="APELLIDO_2">APELLIDO_2: #</p>
-          <p item="FECHA">FECHA: #</p>
-          <p item="TELEFONO">TELEFONO: #</p>
-          <p item="CORREO">CORREO: #</p>
-          <p item="LEVEL">LEVEL: #</p>
-          <p item="VEHICULO">VEHICULO: #</p>
+          <ul></ul>
+          <div>
+            <p></p>
+            <p item="ID">ID: #</p>
+            <p item="NOMBRE">NOMBRE: #</p>
+            <p item="APELLIDO_1">APELLIDO_1: #</p>
+            <p item="APELLIDO_2">APELLIDO_2: #</p>
+            <p item="FECHA">FECHA: #</p>
+            <p item="TELEFONO">TELEFONO: #</p>
+            <p item="CORREO">CORREO: #</p>
+            <p item="LEVEL">LEVEL: #</p>
+            <p item="VEHICULO">VEHICULO: #</p>
+          </div>
         </div>
-        </div><br>
+        <br />
         <div class="Flex">
           <button type="button" class="Btn_Sty_4" onclick="S_ADMIN('Users','',-1)">
-          <img src="IMG/Undo.svg" alt="">
-          VOLVER  
+            <img src="IMG/Undo.svg" alt="" />
+            VOLVER
           </button>
           <button type="button" class="Btn_Sty_3" onclick="S_ADMIN('Users','',-1)">
-          <img src="IMG/Delete.svg" alt="">
-          RECHAZAR
+            <img src="IMG/Delete.svg" alt="" />
+            RECHAZAR
           </button>
           <button type="button" class="Btn_Sty_2" onclick="S_ADMIN('Users','',-1)">
-          <img src="IMG/Document.svg" alt="">
-          ACEPTAR
+            <img src="IMG/Document.svg" alt="" />
+            ACEPTAR
           </button>
         </div>
       </div>
@@ -1167,25 +839,26 @@
 
     <div class="Mn_SControl Hiden" id="Mn_SControl">
       <div class="Cn_SControl">
-        <h2>CONTROL DE REGISTROS</h2><br>
+        <h2>CONTROL DE REGISTROS</h2>
+        <br />
         <div class="Flex">
-          <ul>
-          </ul>
-        <div>
-          <br><br>
-          <p item="FECHA" placeholder="FECHA">FECHA: #</p>
-          <p item="ID" placeholder="ID">ID: #</p>
-          <p item="MOVIMIENTO" placeholder="MOVIMIENTO">MOVIMIENTO: #</p>
+          <ul></ul>
+          <div>
+            <br /><br />
+            <p item="FECHA" placeholder="FECHA">FECHA: #</p>
+            <p item="ID" placeholder="ID">ID: #</p>
+            <p item="MOVIMIENTO" placeholder="MOVIMIENTO">MOVIMIENTO: #</p>
+          </div>
         </div>
-        </div><br>
+        <br />
         <div class="Flex">
           <button type="button" class="Btn_Sty_4" onclick="S_ADMIN('CONTROL','',-1)">
-          <img src="IMG/Undo.svg" alt="">
-          VOLVER  
+            <img src="IMG/Undo.svg" alt="" />
+            VOLVER
           </button>
           <button type="button" class="Btn_Sty_3" onclick="S_ADMIN('CONTROL','',-1)">
-          <img src="IMG/Delete.svg" alt="">
-          ELIMINAR
+            <img src="IMG/Delete.svg" alt="" />
+            ELIMINAR
           </button>
         </div>
       </div>
